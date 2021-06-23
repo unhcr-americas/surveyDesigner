@@ -1,7 +1,14 @@
 
 # {surveyDesigner} <img src="https://raw.githubusercontent.com/unhcr-americas/surveyDesigner/master/inst/hex-surveyDesigner.png" align="right" width="120"/>
 
+<!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/unhcr-americas/surveyDesigner/branch/main/graph/badge.svg)](https://codecov.io/gh/unhcr-americas/surveyDesigner?branch=main)
+<!-- badges: end -->
+
+
 `{surveyDesigner}` is a shinyApp to parse a master XlsForm to generate a contextualized questionnaire.
+
+The app was build using [`{golem}`](https://thinkr-open.github.io/golem) following the tutorial [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org//)
 
 ## Installation
 
