@@ -1,7 +1,7 @@
 
-# {surveyDesigner} <img src="https://raw.githubusercontent.com/unhcr-americas/surveyDesigner/master/inst/surveyDesigner.png" align="right" width="120"/>
+# {surveyDesigner} <img src="https://raw.githubusercontent.com/unhcr-americas/surveyDesigner/master/inst/hex-surveyDesigner.png" align="right" width="120"/>
 
-`{surveyDesigner}` is an opinionated framework for building production-grade shiny applications.
+`{surveyDesigner}` is a shinyApp to parse a master XlsForm to generate a contextualized questionnaire.
 
 ## Installation
 
@@ -12,22 +12,16 @@ You can install the development version from [GitHub](https://github.com/Thinkr-
 remotes::install_github("unhcr-americas/surveyDesigner")
 ```
 
-## Run the app
-
+## Run the app  
 This script allows you to display the app
-
 
 ``` r
 # Run the application
 surveyDesigner::run_app()
 ```
 
-
-
-## Update the app
-
+## Update the app  
 This script allows you to quickly rebuild and display the app
-
 
 ``` r
 # Detach all loaded packages and clean your environment
@@ -40,5 +34,19 @@ golem::document_and_reload()
 
 # Run the application
 surveyDesigner::run_app()
+```
+
+
+
+## Update the package documentation
+
+This script allows to update the package documentation
+
+``` r
+devtools::document()
+
+devtools::check(document = FALSE)
+
+pkgdown::build_site()
 ```
 

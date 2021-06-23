@@ -10,10 +10,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+ 
 
-`surveyDesigner` is essentially a shiny interface developed as a package using the [`golem` framework](https://thinkr-open.github.io/golem/). 
+`{surveyDesigner}` is essentially a shiny interface developed as a package using the [`golem` framework](https://thinkr-open.github.io/golem/). 
 
 
-The main goal is the interface is to 
+The main goal is the interface is to parse a master XlsForm to generate a contextualized questionnaire.
 
 
