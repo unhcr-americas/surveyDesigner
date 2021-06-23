@@ -1,0 +1,19 @@
+---
+title: "surveyDesigner"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+vignette: >
+  %\VignetteIndexEntry{surveyDesigner}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+`surveyDesigner` is essentially a shiny interface developed as a package using the [`golem` framework](https://thinkr-open.github.io/golem/). 
+
+
+The main goal is the interface is to 
+
+
