@@ -49,6 +49,9 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -73,13 +76,106 @@
 
     
     
-<p><code>{surveyDesigner}</code> is essentially a shiny interface developed as a package using the <a href="https://thinkr-open.github.io/golem/"><code>golem</code> framework</a>.</p>
-<p>The main goal is the interface is to parse a master XlsForm to generate a contextualized questionnaire.</p>
+<p><code>{surveyDesigner}</code> is essentially a shiny interface developed as a package using the <a href="https://thinkr-open.github.io/golem/"><code>golem</code> framework</a>. The main goal is the interface is to generate contextualized questionnaire that follows predefined codebook using <a href="https://xlsform.org/en/">XlsForm standard</a>.</p>
+<div id="why-a-suveydesigner" class="section level2">
+<h2 class="hasAnchor">
+<a href="#why-a-suveydesigner" class="anchor"></a>Why a suveyDesigner?</h2>
+<p>For most assessment, xlsform based platform such as <a href="https://www.kobotoolbox.org/">Kobotoolbox</a>, <a href="https://opendatakit.org/">OpenDataKit</a> or <a href="https://company.ona.io/products/ona-data/features/">ONA</a> have become the <em>de facto</em> standard. Thanks to those platform constructing a questionnaire became extremly easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce strict application of codebook standard.</p>
+<blockquote>
+<p>A codebook describes the contents, structure, and layout of a data collection. A well-documented codebook "contains information intended to be complete and self-explanatory for each variable in a data file</p>
+</blockquote>
+<p>The best codebooks have:</p>
+<ul>
+<li>Description of the study: who did it, why they did it, how they did it.</li>
+<li>Sampling information: what was the population studied, how was the sample drawn, what was the response rate.</li>
+<li>Technical information about the files themselves: number of observations, record length, number of records per observation, etc.</li>
+<li>Structure of the data within the file: hierarchical, multiple cards, etc.</li>
+<li>Details about the data: columns in which specific variables can be found, whether they are character or numeric, and if numeric, what format.</li>
+<li>Text of the questions and responses: some even have how many people responded a particular way.</li>
+</ul>
+</div>
+<div id="challenge-balancing-standardization-contextualization-requirements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#challenge-balancing-standardization-contextualization-requirements" class="anchor"></a>Challenge: balancing Standardization &amp; Contextualization requirements!</h2>
+<p>Enforce Standards…</p>
+<ul>
+<li><p>List of core questions​</p></li>
+<li><p>Flow of questions​ Variable sequences</p></li>
+<li><p>List of indicators​</p></li>
+<li><p>Variable names​ standard naming conventions (Codebook)</p></li>
+<li><p>Variable modalities​ standard naming conventions (Codebook)</p></li>
+<li><p>Skip Logic​</p></li>
+<li><p>Constraint​</p></li>
+</ul>
+<p>….while allowing for contextualization</p>
+<ul>
+<li><p>Supplementary questions​</p></li>
+<li><p>Supplementary indicators​</p></li>
+<li><p>Labels​</p></li>
+<li><p>Specific instructions​</p></li>
+</ul>
+</div>
+<div id="technical-requiement-for-the-interface" class="section level2">
+<h2 class="hasAnchor">
+<a href="#technical-requiement-for-the-interface" class="anchor"></a>Technical Requiement for the interface</h2>
+<p>Question Bank <a href="https://github.com/unhcr-americas/surveyDesigner/blob/main/inst/XlsForm_master.xlsx" class="uri">https://github.com/unhcr-americas/surveyDesigner/blob/main/inst/XlsForm_master.xlsx</a> -</p>
+<p>Map for each question – ​</p>
+<div id="which-analysis-framework-between" class="section level3">
+<h3 class="hasAnchor">
+<a href="#which-analysis-framework-between" class="anchor"></a>Which analysis framework between ​</h3>
+<ul>
+<li><p>ProtMon, ​</p></li>
+<li><p>SitAn, ​</p></li>
+<li><p>Vulnerability, ​</p></li>
+<li><p>Severity ​</p></li>
+</ul>
+</div>
+<div id="which-data-collection-mode" class="section level3">
+<h3 class="hasAnchor">
+<a href="#which-data-collection-mode" class="anchor"></a>Which data collection mode</h3>
+<ul>
+<li><p>Interview, ​</p></li>
+<li><p>Self-administered ​</p></li>
+<li><p>Case management​</p></li>
+</ul>
+</div>
+<div id="points-of-control-on-supplementary-questions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#points-of-control-on-supplementary-questions" class="anchor"></a>Points of control on supplementary questions​</h3>
+<ul>
+<li><p>Check variable names – has meaning, starts with a letter, can use lowerUpper cases – meaningful, not random string. ​</p></li>
+<li><p>Keep existing questions as they are, name new ones. ​</p></li>
+<li><p>Check list choice names - meaningful, not random string. Use of lists already written instead of creating new ones (ex: YesNo, YesNoDnt)​</p></li>
+<li><p>Check required vs. optional – optional is discouraged unless for open text. ​</p></li>
+<li><p>Check relevance – make sure its correct coding for question type (select one vs. multiple). ​</p></li>
+<li><p>Translations at least in Spanish &amp; English​</p></li>
+<li><p>Recommended use of constraints for: integers, dates, multiple choice with ‘none of the above’ ‘prefer not to say’ options. ​</p></li>
+<li><p>Make good use of constraint messages: “Cannot select ‘None of the above’ with other options”. ​</p></li>
+<li><p>Make use of ‘Hint’ space when appropriate. (i.e. read all statement above – or – listen to the answer and select appropriate match within the below list)​</p></li>
+<li><p>Clearly defined question type, based on what evidence you want to gather. ​</p></li>
+<li><p>Step away from a ‘case-management’ mindset and into a data mindset – the question is not used to identify a case, rather to provide evidence that supports/refutes a statement. ​</p></li>
+<li><p>Check/define relevance: under what conditions the question appears. Avoiding ‘not applicable’ as an answer option. ​</p></li>
+<li><p>Minimize/consolidate answer options – a long list of too-specific answers will yield very small %s. Consolidate answers around bigger “themes” that would yield medium-high %s. ​</p></li>
+<li><p>Consider how the person would react to the question – is it too invasive? How likely are they to answer truthfully? Is the terminology difficult to understand?</p></li>
+</ul>
+</div>
+</div>
+<div id="limitation-of-existing-solutions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#limitation-of-existing-solutions" class="anchor"></a>Limitation of existing solutions</h2>
+<ul>
+<li><p><a href="https://support.kobotoolbox.org/question_library.html">Kobotoolbox Question Library</a></p></li>
+<li><p><a href="https://dev.surveydesigner.vam.wfp.org">WFP Survey Designer</a> seems to offer part of the solution but the source are closed and it is not possible to adapt it quickly for other needs</p></li>
+</ul>
+<p><img src="../inst/home_page_screen.png"></p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

@@ -10,11 +10,123 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
- 
-
 `{surveyDesigner}` is essentially a shiny interface developed as a package using the [`golem` framework](https://thinkr-open.github.io/golem/). 
+The main goal is the interface is to generate contextualized questionnaire that follows predefined codebook using [XlsForm standard](https://xlsform.org/en/).
+
+## Why a suveyDesigner?
+
+For most assessment, xlsform based platform such as [Kobotoolbox](https://www.kobotoolbox.org/), [OpenDataKit](https://opendatakit.org/) or [ONA](https://company.ona.io/products/ona-data/features/) have become the _de facto_ standard. Thanks to those platform constructing a questionnaire became extremly easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce strict application of codebook standard. 
 
 
-The main goal is the interface is to parse a master XlsForm to generate a contextualized questionnaire.
+> A codebook describes the contents, structure, and layout of a data collection. A well-documented codebook "contains information intended to be complete and self-explanatory for each variable in a data file
+
+The best codebooks have:
+
+ - Description of the study: who did it, why they did it, how they did it.
+ - Sampling information: what was the population studied, how was the sample drawn, what was the response rate.
+ - Technical information about the files themselves: number of observations, record length, number of records per observation, etc.
+ - Structure of the data within the file: hierarchical, multiple cards, etc.
+ - Details about the data: columns in which specific variables can be found, whether they are character or numeric, and if numeric, what format.
+ - Text of the questions and responses: some even have how many people responded a particular way.
 
 
+## Challenge: balancing Standardization & Contextualization requirements!
+
+Enforce Standards...
+
+ - List of core questions​
+
+ - Flow of questions​ Variable sequences  
+
+ - List of indicators​
+
+ - Variable names​ standard naming conventions (Codebook) 
+
+ - Variable modalities​ standard naming conventions (Codebook) 
+
+ - Skip Logic​
+
+ - Constraint​
+    
+    
+....while allowing for contextualization
+
+ - Supplementary questions​
+
+ - Supplementary indicators​
+
+ - Labels​
+
+ - Specific instructions​
+    
+    
+
+
+ 
+ 
+## Technical Requiement for the interface
+
+Question Bank https://github.com/unhcr-americas/surveyDesigner/blob/main/inst/XlsForm_master.xlsx - 
+
+Map for each question – ​
+
+### Which analysis framework between ​
+
+  - ProtMon, ​
+
+ - SitAn, ​
+
+ - Vulnerability, ​
+
+ - Severity ​
+
+### Which data collection mode
+
+ - Interview, ​
+
+ - Self-administered ​
+
+ - Case management​
+    
+    
+### Points of control on supplementary questions​
+
+
+ - Check variable names – has meaning, starts with a letter, can use lowerUpper cases – meaningful, not random string. ​
+
+ - Keep existing questions as they are, name new ones. ​
+
+ - Check list choice names - meaningful, not random string. Use of lists already written instead of creating new ones (ex: YesNo, YesNoDnt)​
+
+ - Check required vs. optional – optional is discouraged unless for open text. ​
+
+ - Check relevance – make sure its correct coding for question type (select one vs. multiple). ​
+
+ - Translations at least in Spanish & English​
+
+ - Recommended use of constraints for: integers, dates, multiple choice with ‘none of the above’ ‘prefer not to say’ options. ​
+
+ - Make good use of constraint messages: “Cannot select ‘None of the above’ with other options”. ​
+
+ - Make use of ‘Hint’ space when appropriate. (i.e. read all statement above – or – listen to the answer and select appropriate match within the below list)​
+    
+ - Clearly defined question type, based on what evidence you want to gather. ​
+
+ - Step away from a ‘case-management’ mindset and into a data mindset – the question is not used to identify a case, rather to provide evidence that supports/refutes a statement.  ​
+
+ - Check/define relevance: under what conditions the question appears. Avoiding ‘not applicable’ as an answer option. ​
+
+ - Minimize/consolidate answer options –  a long list of too-specific answers will yield very small %s. Consolidate answers around bigger “themes” that would yield medium-high %s. ​
+    
+    
+  - Consider how the person would react to the question – is it too invasive? How likely are they to answer truthfully? Is the terminology difficult to understand? 
+  
+  
+## Limitation of existing solutions
+
+ * [Kobotoolbox Question Library](https://support.kobotoolbox.org/question_library.html)
+
+
+  * [WFP Survey Designer](https://dev.surveydesigner.vam.wfp.org) seems to offer part of the solution but the source are closed and it is not possible to adapt it quickly for other needs
+  
+ ![](../inst/home_page_screen.png)  
