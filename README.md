@@ -11,7 +11,7 @@
 
 The app is build using [`{golem}` framework](https://thinkr-open.github.io/golem) and following the tutorial: [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org//).
 
-Read more on the rationale for this app in the [vignette](/articles/surveyDesigner.html)
+Read more on the rationale for this app in the [vignette](https://unhcr-americas.github.io/surveyDesigner/docs/articles/surveyDesigner.html)
 
 ## Installation
 
