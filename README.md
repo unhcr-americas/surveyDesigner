@@ -9,7 +9,9 @@
 
 `{surveyDesigner}` is a shinyApp to parse a master XlsForm to generate a contextualized questionnaire.
 
-The app was build using [`{golem}`](https://thinkr-open.github.io/golem) following the tutorial [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org//)
+The app is build using [`{golem}` framework](https://thinkr-open.github.io/golem) and following the tutorial: [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org//).
+
+Read more on the rationale for this app in the [vignette](/articles/surveyDesigner.html)
 
 ## Installation
 
