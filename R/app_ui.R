@@ -10,7 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic 
     fluidPage(
-      #h1("surveyDesigner"),
+      h1("surveyDesigner"),
       
       # titlePanel("surveyDesigner"),
       # sidebarLayout(
@@ -116,9 +116,17 @@ golem_add_external_resources <- function(){
     bundle_resources(
       path = app_sys('app/www'),
       app_title = 'surveyDesigner'
+    ),
+    
+    golem::favicon(),
+    # Add here all the external resources
+    # If you have a custom.css in the inst/app/www
+    # Or for example, you can add shinyalert::useShinyalert() here
+    htmltools::htmlDependency(
+      "notifyjs", version = "0.1.0",
+      src = system.file('app/www', package = 'surveyDesigner'),
+      script = "notify.js"
     )
-    # Add here other external resources
-    # for example, you can add shinyalert::useShinyalert() 
   )
 }
 

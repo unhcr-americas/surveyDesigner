@@ -20,23 +20,34 @@ The main goal is the interface is to generate contextualized questionnaires that
 
 For most assessment, [XlsForm](https://xlsform.org/en/) based platform such as [Kobotoolbox](https://www.kobotoolbox.org/), [OpenDataKit](https://opendatakit.org/) or [ONA](https://company.ona.io/products/ona-data/features/) have become the _de facto_ standard. Thanks to those platform constructing a questionnaire became extremly easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce good practices (like the one described [here](https://unhcr.github.io/Integrated-framework-household-survey/Configure-forms.html))
 
+### Implement Standards
 
 Enforce Standards...
 
- - List of core questions  
+ - List of questions allowing to generate Basic & Standard Indicators  
  - Flow of questions Variable sequences  
  - List of indicators
- - Variable names standard naming conventions (Codebook) 
- - Variable modalities standard naming conventions (Codebook) 
+ - Variable names & Variable modalities names standard naming conventions 
  - Skip Logic
  - Constraint
 
 ....while allowing for contextualization
 
- - Supplementary questions
- - Supplementary indicators
+ - Supplementary questions and related optional indicators
  - Adjusted Labels
  - Country Specific instructions
+ 
+### Estimate questionnaire lenght
+
+An important dimension in terms of data collection quality is to ensure that the final questionnaire is not long to avoid fatiguing respondents and to maintain their peak concentration without being distracted by other things, i.e __not more than 20-40 minutes__ (depending on skip logic). Optimal survey lengths are usually significantly linked the way the questions are designed and to the fact that respondents have interest in answering the survey and can trust that their data will be treated in an anonymous way. Optimal survey duration also depends on data collection mode (self-administered or interview) and both abandon rates and interview attention focus increase significantly with the number of questions includes in the questionnaire.
+
+For both, [Education](https://www.unhcr.org/en-us/60804b214.pdf#page=7) and [Employment](https://www.unhcr.org/5ea81b954.pdf), indicators were already classified as __basic, standard & optional__. This can help defining a process where:
+
+- Each questionnaire should systematically include all core questions to calculate basic indicators
+- Depending on the quarterly data collection round, a different set of standard indicators, corresponding to one or more questions modules, can be prioritized
+- After calculating the remaining potential interview time, once core & standard indicators, optional indicators can be added though supplementary and contextualisable questions
+ 
+### Generate machine-readable codebook
  
 A survey designer is not expected to be only a form-builder, but rather a codebook generator.
 
@@ -51,15 +62,20 @@ A survey designer is not expected to be only a form-builder, but rather a codebo
 
 Using [Pcode](https://www.humanitarianresponse.info/en/help/cod-pcodes-use-hrinfo) is critical to ensure that the recording of location is done in a smooth way. When designing a form, it is essential that the usage of standardised pcode is enforced for each country.
 
-#### 2. Define what Analysis Framework will the dataset be useful for
+#### 2. Enforce the basic indicators that the dataset should generate:
 
- 1- [Protection Analysis Framework (PAF)](https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf);
+There a multiple analysis framework that 
 
- 2- [Severity analysis (JIAF)](https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf);  
 
- 3- [Vulnerability Analysis](https://docs.wfp.org/api/documents/WFP-0000113729/download/);  
+ 1- [International Recomendations on Refugee Statistics (EGRIS)](https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94), most indictors there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by [UN Statistics](https://unstats.un.org/sdgs/metadata/));
 
- 4- [Situation Analysis (SitAn)](https://intranet.unhcr.org/en/protection-programme/compass/COMPASS_Guidance/Guidance_6.html).
+ 2- [Protection Analysis Framework (PAF)](https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf);
+
+ 3- [Severity analysis (JIAF)](https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf);  
+
+ 4- [Vulnerability Analysis](https://docs.wfp.org/api/documents/WFP-0000113729/download/);  
+
+ 5- [Situation Analysis (SitAn)](https://intranet.unhcr.org/en/protection-programme/compass/COMPASS_Guidance/Guidance_6.html).
 
 
 #### 3. Define which Modules shall be used & which Indicators is expected to be calculated 

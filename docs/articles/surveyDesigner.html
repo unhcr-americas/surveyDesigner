@@ -81,29 +81,46 @@
 <h2 class="hasAnchor">
 <a href="#problem-statement-why-a-survey-designer" class="anchor"></a>Problem Statement: Why a Survey Designer?</h2>
 <p>For most assessment, <a href="https://xlsform.org/en/">XlsForm</a> based platform such as <a href="https://www.kobotoolbox.org/">Kobotoolbox</a>, <a href="https://opendatakit.org/">OpenDataKit</a> or <a href="https://company.ona.io/products/ona-data/features/">ONA</a> have become the <em>de facto</em> standard. Thanks to those platform constructing a questionnaire became extremly easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce good practices (like the one described <a href="https://unhcr.github.io/Integrated-framework-household-survey/Configure-forms.html">here</a>)</p>
+<div id="implement-standards" class="section level3">
+<h3 class="hasAnchor">
+<a href="#implement-standards" class="anchor"></a>Implement Standards</h3>
 <p>Enforce Standards…</p>
 <ul>
-<li>List of core questions<br>
+<li>List of questions allowing to generate Basic &amp; Standard Indicators<br>
 </li>
 <li>Flow of questions Variable sequences<br>
 </li>
 <li>List of indicators</li>
-<li>Variable names standard naming conventions (Codebook)</li>
-<li>Variable modalities standard naming conventions (Codebook)</li>
+<li>Variable names &amp; Variable modalities names standard naming conventions</li>
 <li>Skip Logic</li>
 <li>Constraint</li>
 </ul>
 <p>….while allowing for contextualization</p>
 <ul>
-<li>Supplementary questions</li>
-<li>Supplementary indicators</li>
+<li>Supplementary questions and related optional indicators</li>
 <li>Adjusted Labels</li>
 <li>Country Specific instructions</li>
 </ul>
+</div>
+<div id="estimate-questionnaire-lenght" class="section level3">
+<h3 class="hasAnchor">
+<a href="#estimate-questionnaire-lenght" class="anchor"></a>Estimate questionnaire lenght</h3>
+<p>An important dimension in terms of data collection quality is to ensure that the final questionnaire is not long to avoid fatiguing respondents and to maintain their peak concentration without being distracted by other things, i.e <strong>not more than 20-40 minutes</strong> (depending on skip logic). Optimal survey lengths are usually significantly linked the way the questions are designed and to the fact that respondents have interest in answering the survey and can trust that their data will be treated in an anonymous way. Optimal survey duration also depends on data collection mode (self-administered or interview) and both abandon rates and interview attention focus increase significantly with the number of questions includes in the questionnaire.</p>
+<p>For both, <a href="https://www.unhcr.org/en-us/60804b214.pdf#page=7">Education</a> and <a href="https://www.unhcr.org/5ea81b954.pdf">Employment</a>, indicators were already classified as <strong>basic, standard &amp; optional</strong>. This can help defining a process where:</p>
+<ul>
+<li>Each questionnaire should systematically include all core questions to calculate basic indicators</li>
+<li>Depending on the quarterly data collection round, a different set of standard indicators, corresponding to one or more questions modules, can be prioritized</li>
+<li>After calculating the remaining potential interview time, once core &amp; standard indicators, optional indicators can be added though supplementary and contextualisable questions</li>
+</ul>
+</div>
+<div id="generate-machine-readable-codebook" class="section level3">
+<h3 class="hasAnchor">
+<a href="#generate-machine-readable-codebook" class="anchor"></a>Generate machine-readable codebook</h3>
 <p>A survey designer is not expected to be only a form-builder, but rather a codebook generator.</p>
 <blockquote>
 <p>A codebook describes the contents, structure, and layout of a data collection. A well-documented codebook "contains information intended to be complete and self-explanatory for each variable in a data file</p>
 </blockquote>
+</div>
 </div>
 <div id="technical-requirements-for-the-interface" class="section level2">
 <h2 class="hasAnchor">
@@ -116,13 +133,15 @@
 <a href="#configure-per-default-the-correct-p-code-for-admin-unit-in-the-country" class="anchor"></a>1. Configure per default the correct P-code for admin unit in the country</h4>
 <p>Using <a href="https://www.humanitarianresponse.info/en/help/cod-pcodes-use-hrinfo">Pcode</a> is critical to ensure that the recording of location is done in a smooth way. When designing a form, it is essential that the usage of standardised pcode is enforced for each country.</p>
 </div>
-<div id="define-what-analysis-framework-will-the-dataset-be-useful-for" class="section level4">
+<div id="enforce-the-basic-indicators-that-the-dataset-should-generate" class="section level4">
 <h4 class="hasAnchor">
-<a href="#define-what-analysis-framework-will-the-dataset-be-useful-for" class="anchor"></a>2. Define what Analysis Framework will the dataset be useful for</h4>
-<p>1- <a href="https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf">Protection Analysis Framework (PAF)</a>;</p>
-<p>2- <a href="https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf">Severity analysis (JIAF)</a>;</p>
-<p>3- <a href="https://docs.wfp.org/api/documents/WFP-0000113729/download/">Vulnerability Analysis</a>;</p>
-<p>4- <a href="https://intranet.unhcr.org/en/protection-programme/compass/COMPASS_Guidance/Guidance_6.html">Situation Analysis (SitAn)</a>.</p>
+<a href="#enforce-the-basic-indicators-that-the-dataset-should-generate" class="anchor"></a>2. Enforce the basic indicators that the dataset should generate:</h4>
+<p>There a multiple analysis framework that</p>
+<p>1- <a href="https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94">International Recomendations on Refugee Statistics (EGRIS)</a>, most indictors there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by <a href="https://unstats.un.org/sdgs/metadata/">UN Statistics</a>);</p>
+<p>2- <a href="https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf">Protection Analysis Framework (PAF)</a>;</p>
+<p>3- <a href="https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf">Severity analysis (JIAF)</a>;</p>
+<p>4- <a href="https://docs.wfp.org/api/documents/WFP-0000113729/download/">Vulnerability Analysis</a>;</p>
+<p>5- <a href="https://intranet.unhcr.org/en/protection-programme/compass/COMPASS_Guidance/Guidance_6.html">Situation Analysis (SitAn)</a>.</p>
 </div>
 <div id="define-which-modules-shall-be-used-which-indicators-is-expected-to-be-calculated" class="section level4">
 <h4 class="hasAnchor">
