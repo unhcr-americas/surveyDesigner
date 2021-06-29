@@ -18,7 +18,9 @@ The main goal is the interface is to generate contextualized questionnaires that
 
 ## Problem Statement: Why a Survey Designer?
 
-For most assessment, [XlsForm](https://xlsform.org/en/) based platform such as [Kobotoolbox](https://www.kobotoolbox.org/), [OpenDataKit](https://opendatakit.org/) or [ONA](https://company.ona.io/products/ona-data/features/) have become the _de facto_ standard. Thanks to those platform constructing a questionnaire became extremly easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce good practices (like the one described [here](https://unhcr.github.io/Integrated-framework-household-survey/Configure-forms.html))
+For most assessment, [XlsForm](https://xlsform.org/en/) based platform such as [Kobotoolbox](https://www.kobotoolbox.org/), [OpenDataKit](https://opendatakit.org/) or [ONA](https://company.ona.io/products/ona-data/features/) have become the _de facto_ standard. Thanks to those platform constructing a questionnaire became extremely easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce good practices (like the one described [here](https://unhcr.github.io/Integrated-framework-household-survey/Configure-forms.html)). Although questionnaire design mostly relies on common sense (Ask interesting questions first, be concise, limit answer options, use simple phrasing, ask about recent events and avoid too many open-ended questions), building a good and reliable questionnaire requires a lot of testing.
+
+Rather than starting from scratch, it is better to leverage the existing knowledge.
 
 ### Implement Standards
 
