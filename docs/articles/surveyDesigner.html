@@ -122,6 +122,11 @@
 <p>A codebook describes the contents, structure, and layout of a data collection. A well-documented codebook "contains information intended to be complete and self-explanatory for each variable in a data file</p>
 </blockquote>
 </div>
+<div id="track-calculation-for-calculatedderived-variables" class="section level3">
+<h3 class="hasAnchor">
+<a href="#track-calculation-for-calculatedderived-variables" class="anchor"></a>Track calculation for calculated/derived variables</h3>
+<p>In many cases, standard indicators are not directly generated though a question but rather through a combination of questions, grouped together with a specific formula. This is the case for instance for the <a href="https://www.ilo.org/ilostat-files/LFS/CAPI_JobType_V3_Full.zip">ILO Employement indicators</a>. as the survey designer shall enforce a standardized codebook, it shall be also possible to enforce the same standardized calculation.</p>
+</div>
 </div>
 <div id="technical-requirements-for-the-interface" class="section level2">
 <h2 class="hasAnchor">
@@ -132,13 +137,13 @@
 <div id="configure-per-default-the-correct-p-code-for-admin-unit-in-the-country" class="section level4">
 <h4 class="hasAnchor">
 <a href="#configure-per-default-the-correct-p-code-for-admin-unit-in-the-country" class="anchor"></a>1. Configure per default the correct P-code for admin unit in the country</h4>
-<p>Using <a href="https://www.humanitarianresponse.info/en/help/cod-pcodes-use-hrinfo">Pcode</a> is critical to ensure that the recording of location is done in a smooth way. When designing a form, it is essential that the usage of standardised pcode is enforced for each country.</p>
+<p>Using <a href="https://www.humanitarianresponse.info/en/help/cod-pcodes-use-hrinfo">P-code</a> is critical to ensure that the recording of location is done in a smooth way. When designing a form, it is essential that the usage of standardized p-code is enforced for each country.</p>
 </div>
 <div id="enforce-the-basic-indicators-that-the-dataset-should-generate" class="section level4">
 <h4 class="hasAnchor">
 <a href="#enforce-the-basic-indicators-that-the-dataset-should-generate" class="anchor"></a>2. Enforce the basic indicators that the dataset should generate:</h4>
 <p>There a multiple analysis framework that</p>
-<p>1- <a href="https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94">International Recomendations on Refugee Statistics (EGRIS)</a>, most indictors there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by <a href="https://unstats.un.org/sdgs/metadata/">UN Statistics</a>);</p>
+<p>1- <a href="https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94">International Recomendations on Refugee Statistics (EGRIS)</a>, most indicators there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by <a href="https://unstats.un.org/sdgs/metadata/">UN Statistics</a>), UNHCR has highlighted the list of <a href="https://www.unhcr.org/5fd237b84/data-disaggregation-sdg-indicators-forced-displacement">Data disaggregation of SDG indicators by forced displacement</a>;</p>
 <p>2- <a href="https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf">Protection Analysis Framework (PAF)</a>;</p>
 <p>3- <a href="https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf">Severity analysis (JIAF)</a>;</p>
 <p>4- <a href="https://docs.wfp.org/api/documents/WFP-0000113729/download/">Vulnerability Analysis</a>;</p>
@@ -161,7 +166,7 @@
 <h4 class="hasAnchor">
 <a href="#pre-record-survey-metadata" class="anchor"></a>5. Pre-record Survey Metadata</h4>
 <p>Data Documentation is now covered by the <a href="https://ddialliance.org/">DDI Standard</a> whcih describes data produced by surveys and other observational methods in the social, behavioral, economic, and health sciences.</p>
-<p>DDI is a free standard that can document and manage different stages in the research data life cycle, such as conceptualization, collection, processing, distribution, discovery, and archiving. Documenting data with DDI facilitates understanding, interpretation, and use – by people, software systems, and computer networks. DDI allows to both __D__ocument, __D__iscover, and __I__nteroperate!</p>
+<p>DDI is a free standard that can document and manage different stages in the research data life cycle, such as conceptualization, collection, processing, distribution, discovery, and archiving. Documenting data with DDI facilitates understanding, interpretation, and use – by people, software systems, and computer networks. DDI allows to both Document, Discover, and Interoperate!</p>
 <p>Describe of the study motivating the data collection: - who is expected to collect the data (direct implementation, partners through a project partnership agreement, partners through a memorandum of understanding, contracted company…) - Sampling information: what is the population to be studied, how the sample will be drawn…</p>
 </div>
 </div>
@@ -192,7 +197,7 @@
 <ul>
 <li>Valid XlsForm - that go through validation <a href="https://opendatakit.org/xlsform/">here for instance</a>
 </li>
-<li>In order to avoid having in parallel a word version and an encoded version of the questionnaire, a Pretty printed version of the orginial contextualized XlsForm questionnaire should be generated in either doc, html or PDF, like the one generated by <a href="https://github.com/pmaengineering/ppp">The Pretty PDF Printer–Converting XlsForm Excel files into “paper questionnaires”</a>
+<li>In order to avoid having in parallel a word version and an encoded version of the questionnaire, a Pretty printed version of the original contextualized XlsForm questionnaire should be generated in either doc, html or PDF, like the one generated by <a href="https://github.com/pmaengineering/ppp">The Pretty PDF Printer–Converting XlsForm Excel files into “paper questionnaires”</a>
 </li>
 </ul>
 <p><img src="../inst/demo.png"></p>
@@ -232,10 +237,10 @@
 <li>Does not allow for questionnaire post-validation</li>
 </ul>
 </div>
-<div id="ilo-programme-builder" class="section level3">
+<div id="ilo-labour-force-survey-programme-builder" class="section level3">
 <h3 class="hasAnchor">
-<a href="#ilo-programme-builder" class="anchor"></a>ILO Programme builder</h3>
-<p><a href="https://ilostat.ilo.org/resources/lfs-resources/#programme_builder">ILO Programme builder</a> is designed to also help to the generation of contextualised questionnaire</p>
+<a href="#ilo-labour-force-survey-programme-builder" class="anchor"></a>ILO Labour Force Survey Programme builder</h3>
+<p><a href="https://ilostat.ilo.org/resources/lfs-resources/#programme_builder">ILO Labour Force Survey Programme builder</a> is designed to also help to the generation of contextualised questionnaire</p>
 <p><img src="../inst/ilo.jpg"><br>
 This application though is not compatible with xlsform.</p>
 </div>
