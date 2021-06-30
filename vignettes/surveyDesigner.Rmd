@@ -76,6 +76,8 @@ There a multiple analysis framework that
 
 
  1- [International Recomendations on Refugee Statistics (EGRIS)](https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94), most indicators there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by [UN Statistics](https://unstats.un.org/sdgs/metadata/)), UNHCR has highlighted the list of [Data disaggregation of SDG indicators by forced displacement](https://www.unhcr.org/5fd237b84/data-disaggregation-sdg-indicators-forced-displacement);
+ 
+ ![](../inst/sdg.jpg)   
 
  2- [Protection Analysis Framework (PAF)](https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf);
 
