@@ -143,6 +143,7 @@ for (i in 1:nrow(Goals.this)){
     this.target <- Goals.this[ i, c("target")]
     this.targetdesc <- Goals.this[ i, c("description")]
     this.indicref <- indicref [ indicref$target == this.target,   ]
+    this.indicnum <- indicref [ indicref$target == this.target, c("indicator")  ]
     
     for (j in 1:nrow(this.indicref )) {
       # j <- 1
@@ -176,11 +177,11 @@ for (i in 1:nrow(Goals.this)){
        # h <- 18 
       if ( nlevels(as.factor(dfna[ , h])) >= 2) {
           #dfna[ , h] <- dfna[ , h] 
-          cat(paste0(nlevels(as.factor(dfna[ , h])), " levesl for ", names(dfna)[h],"those are :",levels(as.factor(dfna[ , h])),  "\n" ))
+          #cat(paste0(nlevels(as.factor(dfna[ , h])), " levesl for ", names(dfna)[h],"those are :",levels(as.factor(dfna[ , h])),  "\n" ))
            disagg <- rbind( disagg, as.character(names(dfna)[h]))
           } else {
           # dfna[ , h] <- NULL
-          cat(paste0("less than 2 levesl for for ", names(dfna)[h], "\n")) 
+          #cat(paste0("less than 2 levesl for for ", names(dfna)[h], "\n")) 
           }
       }
       
@@ -228,6 +229,7 @@ for (i in 1:nrow(Goals.this)){
         dfna1$value <- dfna1$valmean
       }
       
+      sdval <-  sd(dfna1$value)
       ## Provide indication of indicator classificiation in the title
       
       plottitle <-  paste0(this.seriesdesc, "\nDimension: ", this.seriesDimension, " ",
@@ -246,7 +248,11 @@ for (i in 1:nrow(Goals.this)){
                  y = value,
                  group = 1)) +
         geom_line( size = 1.5, color = "blue" ) +
-        geom_point(shape =15, size = 2, color = "blue") +   
+        geom_point(shape =15, size = 2, color = "blue") +  
+         
+        #  gghighlight::gghighlight(value >= mean(dfna1$value),
+        # #value - sdval,
+        #                  use_direct_label = FALSE) + 
         # geom_tile( data = yearfocus,
         #            aes(x = year, 
         #                y = value, 
@@ -272,8 +278,13 @@ for (i in 1:nrow(Goals.this)){
                                                  "\n Hint: ", this.serieshint), 320))
       
       #print(p)
-      
-      ggsave(plot = p , filename= paste0("sdg/",i,"-",j,"-",this.series,".png"), width = 12, height = 8, units = "in")
+      file <- paste0("sdg/",
+                     ifelse(this.seriesRBM=="RBM" , paste0("Ind_RBM"),"Ind" ),"-", 
+                     this.seriesDimension,"-",
+                     this.indicnum,"-",
+                     this.series,".png")
+      cat(paste0(file, "\n"))
+      ggsave(plot = p , filename= file, width = 12, height = 8, units = "in", device = "png")
       rm(p, df, dfna, dfna1)
       
     } 

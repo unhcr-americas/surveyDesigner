@@ -1,0 +1,501 @@
+---
+title: "UNHCR | Survey Designer"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: column
+    source_code: embed
+    theme: 
+      version: 4
+      navbar-bg: "#0072BC"
+      bootswatch: yeti
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+
+library(shinyBS) ## For tooltip
+
+library(jsonlite)
+library(shinipsum)
+library(DT)
+
+ 
+#devtools::install_github("shinyTree/shinyTree")
+#library(shinyTree)
+
+#devtools::install_github("stla/jsTreeR")
+library(jsTreeR)  
+```
+
+
+Sidebar {.sidebar}
+=====================================
+
+Get Household Survey Questionnaires fully aligned with international standards and internal codebook. 
+
+```{r}
+tags$div(title="Here you can select the Contextualised Library of indicators",
+selectInput("library", label =  "Regional Library" , 
+    choices = list("Americas" = "Americas", 
+                   "Asia" = "Asia",
+                   "Eastern-Africa" = "Eastern-Africa",
+                   "Western-Africa" = "Western-Africa", 
+                   "Southern-Africa" = "Southern-Africa", 
+                   "MENA" = "MENA",
+                   "Europa" = "Europa"), 
+    selected = "Americas"
+    )
+)
+
+
+```
+
+```{r}
+# https://www.davidsolito.com/post/conditional-drop-down-in-shiny/ 
+tags$div(title="Select your country - this will pull up automatically the Case Load that should be covered based on your annual statistical report and implement the languages translation and geographic breakdown required for the country",
+selectInput("library", 
+            label = "Country → PopGroup, Lang & Pcode", 
+    choices = list("Panama" = "Panama", 
+                   "Colombia" = "Colombia",
+                   "Ecuador" = "Ecuador" ), 
+    selected = "Panama")
+)
+```
+
+
+```{r}
+tags$div(title="Define how many data collection waves you can manage within the year. The more data collection wave the more indicators can be collected. ",
+selectInput("wave", 
+            label = "How many data collection waves for this annual cycle?", 
+    choices = list("Four-waves" = "Four waves",
+                   "Three-waves" = "Three waves",
+                   "One-wave" = "One wave", 
+                   "Two-waves" = "Two waves" ), 
+    selected = "Four-waves")
+)
+``` 
+
+```{r}
+tags$div(title="Using multiple data collection mode in parallel can help minimizing non-reponse and increase coverage.",
+checkboxGroupInput("mode", 
+              label =  "What Data Collection Modes can be used for this annual cycle?" , 
+    # choiceNames = list("Face-to-face CAPI"  ,
+    #                "Phone-Interview CATI"  ,
+    #                "Self-administered CAWI"  ),
+      
+    choiceNames = list(
+      list(
+        icon("calendar-check-o"),
+         "Face-to-face CAPI"
+      ), 
+      list(
+        icon("phone-square") ,
+        "Phone-Interview CATI"  
+      ), 
+      list(
+        icon("pencil-square-o"),
+        "Self-administered CAWI"  
+      )),
+    
+   choiceValues =  list("Face-to-face"  , 
+                   "Phone-Interview"  ,
+                   "Self-administered" ))
+)
+```
+
+ 
+
+```{r}
+checkboxGroupInput("topic", 
+              label = "Select the Topics to prioritise in the annual data collection cycle!", 
+    choiceNames = list(
+      list(
+        icon("gavel") ,
+        "Rights"  
+      ), 
+      list(
+        icon("home"),
+        "Trajectory"  
+      ), 
+      list(
+        icon("thermometer-full"),
+        "Intention"  
+      ), 
+      list(
+        icon("check-circle"),
+        "Basic Needs"  
+      ), 
+      list(
+        icon("certificate"),
+        "Coping Capacity"  
+      ), 
+      list(
+        icon("users"),
+        "Well-Being"  
+      ), 
+      list(
+        icon("blind"),
+         "Victimisation"
+      ), 
+      list(
+        icon("usd"),
+        "Livelihood"  
+      ), 
+      list(
+        icon("book"),
+        "Education"  
+      ), 
+      list(
+        icon("medkit"),
+        "Health-Nutrition"  
+      ), 
+      list(
+        icon("eye"),
+        "Accountability" 
+      ), 
+      list(
+        icon("info-circle"),
+        "Information" 
+      )),
+   choiceValues =  list("Rights"  ,
+                   "Trajectory"  , 
+                   "Intention"  ,  
+                   "Basic Needs"  , 
+                   "Coping Capacity"  , 
+                   "Well-Being"  ,
+                   "Victimisation"  , 
+                   "Livelihood"  ,
+                   "Education"  ,
+                   "Health-Nutrition"  , 
+                   "Accountability",
+                   "Information"  ))
+
+
+ 
+
+```
+
+
+```{r}
+nodes <- list(
+  list(
+    text = "Standard Indicators",
+    data = list(value = 999),
+    icon = "far fa-file red",
+    children = list(
+      list(
+        text =  "Rights"   ,
+        icon = "fa fa-gavel green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1" 
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Trajectory"  ,
+        icon = "fa fa-home green"
+      ), 
+      list(
+        text = "Intention"  ,
+        icon = "fa fa-thermometer-full green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Basic Needs"  ,
+        icon = "fa fa-check-circle green"
+      ), 
+      list(
+        text = "Coping Capacity"  ,
+        icon = "fa fa-certificate green"
+      ), 
+      list(
+        text = "Well-Being"  ,
+        icon = "fa fa-users green"
+      ), 
+      list(
+        text = "Victimisation"  ,
+        icon = "fa fa-blind green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Livelihood"  ,
+        icon = "fa fa-usd green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Education"  ,
+        icon = "fa fa-book green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Health-Nutrition"  ,
+        icon = "fa fa-medkit green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Accountability" ,
+        icon = "fa fa-eye green"
+      ), 
+      list(
+        text = "Information" ,
+        icon = "fa fa-info-circle green"
+      )
+    )
+  ),
+  list(
+    text = "Optional Indicators",
+    icon = "far fa-star red",
+   
+    children = list(
+      list(
+        text =  "Rights"   ,
+        icon = "fa fa-gavel green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Trajectory"  ,
+        icon = "fa fa-home green"
+      ), 
+      list(
+        text = "Intention"  ,
+        icon = "fa fa-thermometer-full green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Basic Needs"  ,
+        icon = "fa fa-check-circle green"
+      ), 
+      list(
+        text = "Coping Capacity"  ,
+        icon = "fa fa-certificate green"
+      ), 
+      list(
+        text = "Well-Being"  ,
+        icon = "fa fa-users green"
+      ), 
+      list(
+        text = "Victimisation"  ,
+        icon = "fa fa-blind green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Livelihood"  ,
+        icon = "fa fa-usd green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Education"  ,
+        icon = "fa fa-book green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Health-Nutrition"  ,
+        icon = "fa fa-medkit green",
+        children = list(
+          list(
+            text = "SDG Indicator 16.2.1"  
+          ),
+          
+          list(
+            text = "SDG Indicator 3.2.1"  
+          ))
+      ), 
+      list(
+        text = "Accountability" ,
+        icon = "fa fa-eye green"
+      ), 
+      list(
+        text = "Information" ,
+        icon = "fa fa-info-circle green"
+      )
+    )
+  )
+)
+
+## Need to filter the orginal node - based on the checkboxGroupInput
+
+## Selector
+output[["jstree"]] <- renderJstree({
+  jstree(nodes, 
+         dragAndDrop = TRUE, 
+         checkboxes = TRUE, 
+         search = TRUE,
+         theme = "proton")
+})
+
+## Results of selection
+output[["treeSelected"]] <- renderPrint({
+  input[["jstree_selected"]]
+})
+```
+
+1. Indicators selection
+=====================================  
+ 
+
+Column {data-width=400}
+-----------------------------------------------------------------------
+
+### Select additional Standard & Optional <code>Indicators</code>
+
+```{r}
+helpText(HTML("Core Indicators, like demographics, and modules like screeening questions are already preselected. Check the availibility of baseline values for the indicators you may consider before selecting them<hr> "))
+
+## need to implement
+# if(interactive()){
+#   jstreeExample("filtering")
+# }
+
+jstreeOutput("jstree")
+```
+
+Column {data-width=400}
+-----------------------------------------------------------------------
+
+### Selected <code>indicators</code> for your survey plan
+
+```{r}
+
+helpText(HTML("You can export your fully documented survey indicators plan with the button below.  <hr>"))
+
+renderPrint({
+    toJSON(input[["jstree_selected"]], 
+           pretty = TRUE, 
+           auto_unbox = TRUE)
+  })
+
+#verbatimTextOutput("treeSelected")
+
+# datatable(as.data.frame("treeSelected"),
+#   options = list(paging = TRUE,    ## paginate the output
+#                  pageLength = 15,  ## number of rows to output for each page
+#                  scrollX = TRUE,   ## enable scrolling on X axis
+#                  scrollY = TRUE,   ## enable scrolling on Y axis
+#                  autoWidth = TRUE, ## use smart column width handling
+#                  server = FALSE,   ## use client-side processing
+#                  dom = 'Bfrtip',
+#                  buttons = c('excel'), # 'csv', 
+#                  columnDefs = list(list(targets = '_all', 
+#                                         className = 'dt-center'),
+#                                    list(targets = c(0, 8, 9), 
+#                                         visible = FALSE))
+#                  ),
+#   extensions = 'Buttons',
+#   selection = 'single', ## enable selection of a single row
+#   filter = 'bottom',              ## include column filters at the bottom
+#   rownames = FALSE                ## don't show row numbers/names
+# )
+
+```
+    
+
+   
+2. Spread over Data Collection Waves
+=====================================     
+
+### Allocated <code>Indicators</code> per wave
+
+```{r}
+helpText(HTML("Below is an estimation of Interview lenght per questionnaire  <hr>"))
+ 
+```
+
+
+3. Revise Resulting Forms
+=====================================     
+
+### Chart 2
+
+4. Get the XlsForm
+=====================================     
+
+### Download <code>XlsForm</code>  
+
+```{r}
+helpText(HTML("The resulting XlsForm can either be adjusted manually or pushed directly to UNHCR Kobo server. You can download the files for each data collection wave  <hr>"))
+ 
+```
+    
+### Push <code>XlsForm</code>  to the server
+
+```{r}
+helpText(HTML("Alternatively push directly to the server  <hr>"))
+ 
+```
+

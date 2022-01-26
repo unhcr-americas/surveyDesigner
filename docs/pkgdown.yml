@@ -1,7 +1,7 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 2.14.0.3
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   surveyDesigner: surveyDesigner.html
-last_built: 2021-06-30T16:34Z
+last_built: 2022-01-26T06:08Z
 

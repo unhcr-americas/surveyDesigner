@@ -201,6 +201,11 @@ This application though has the following constraints:
  ![](../inst/ilo.jpg)  
 This application though is not compatible with xlsform.
 
+### Mockup
+
+
+ ![](../man/figures/proto.png)  
+
 ## Required Standard for the master xlsform
 
 An initial example of a question bank is [here](https://github.com/unhcr-americas/surveyDesigner/blob/main/inst/XlsForm_master.xlsx)

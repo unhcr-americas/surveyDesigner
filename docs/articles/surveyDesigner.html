@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">surveyDesigner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/surveyDesigner.html">Get started</a>
 </li>
@@ -63,7 +59,7 @@
 
       
 
-      </header><script src="surveyDesigner_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>surveyDesigner</h1>
@@ -76,15 +72,15 @@
 
     
     
-<p><code>{surveyDesigner}</code> is essentially a shiny interface developed as a package using the <a href="https://thinkr-open.github.io/golem/"><code>golem</code> framework</a>. The main goal is the interface is to generate contextualized questionnaires that follows predefined codebook using <a href="https://xlsform.org/en/">XlsForm standard</a>. Rather than starting from scratch, users can then create questionnaire based on curated questions and modules, allowing to generate standard indicators in relation with agreed-upon pre-defined analysis framework(s).</p>
-<div id="problem-statement-why-a-survey-designer" class="section level2">
-<h2 class="hasAnchor">
-<a href="#problem-statement-why-a-survey-designer" class="anchor"></a>Problem Statement: Why a Survey Designer?</h2>
-<p>For most assessment, <a href="https://xlsform.org/en/">XlsForm</a> based platform such as <a href="https://www.kobotoolbox.org/">Kobotoolbox</a>, <a href="https://opendatakit.org/">OpenDataKit</a> or <a href="https://company.ona.io/products/ona-data/features/">ONA</a> have become the <em>de facto</em> standard. Thanks to those platform constructing a questionnaire became extremely easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce good practices (like the one described <a href="https://unhcr.github.io/Integrated-framework-household-survey/Configure-forms.html">here</a>). Although questionnaire design mostly relies on common sense (Ask interesting questions first, be concise, limit answer options, use simple phrasing, ask about recent events and avoid too many open-ended questions), building a good and reliable questionnaire requires a lot of testing.</p>
+<p><code>{surveyDesigner}</code> is essentially a shiny interface developed as a package using the <a href="https://thinkr-open.github.io/golem/" class="external-link"><code>golem</code> framework</a>. The main goal is the interface is to generate contextualized questionnaires that follows predefined codebook using <a href="https://xlsform.org/en/" class="external-link">XlsForm standard</a>. Rather than starting from scratch, users can then create questionnaire based on curated questions and modules, allowing to generate standard indicators in relation with agreed-upon pre-defined analysis framework(s).</p>
+<div class="section level2">
+<h2 id="problem-statement-why-a-survey-designer">Problem Statement: Why a Survey Designer?<a class="anchor" aria-label="anchor" href="#problem-statement-why-a-survey-designer"></a>
+</h2>
+<p>For most assessment, <a href="https://xlsform.org/en/" class="external-link">XlsForm</a> based platform such as <a href="https://www.kobotoolbox.org/" class="external-link">Kobotoolbox</a>, <a href="https://opendatakit.org/" class="external-link">OpenDataKit</a> or <a href="https://company.ona.io/products/ona-data/features/" class="external-link">ONA</a> have become the <em>de facto</em> standard. Thanks to those platform constructing a questionnaire became extremely easy, but at the same time it also become very eay to replicate questionnaire design flaw and very challenging to enforce good practices (like the one described <a href="https://unhcr.github.io/Integrated-framework-household-survey/Configure-forms.html" class="external-link">here</a>). Although questionnaire design mostly relies on common sense (Ask interesting questions first, be concise, limit answer options, use simple phrasing, ask about recent events and avoid too many open-ended questions), building a good and reliable questionnaire requires a lot of testing.</p>
 <p>Rather than starting from scratch, it is better to leverage the existing knowledge.</p>
-<div id="implement-standards" class="section level3">
-<h3 class="hasAnchor">
-<a href="#implement-standards" class="anchor"></a>Implement Standards</h3>
+<div class="section level3">
+<h3 id="implement-standards">Implement Standards<a class="anchor" aria-label="anchor" href="#implement-standards"></a>
+</h3>
 <p>Enforce Standards…</p>
 <ul>
 <li>List of questions allowing to generate Basic &amp; Standard Indicators<br>
@@ -103,77 +99,77 @@
 <li>Country Specific instructions</li>
 </ul>
 </div>
-<div id="estimate-questionnaire-lenght" class="section level3">
-<h3 class="hasAnchor">
-<a href="#estimate-questionnaire-lenght" class="anchor"></a>Estimate questionnaire lenght</h3>
+<div class="section level3">
+<h3 id="estimate-questionnaire-lenght">Estimate questionnaire lenght<a class="anchor" aria-label="anchor" href="#estimate-questionnaire-lenght"></a>
+</h3>
 <p>An important dimension in terms of data collection quality is to ensure that the final questionnaire is not long to avoid fatiguing respondents and to maintain their peak concentration without being distracted by other things, i.e <strong>not more than 20-40 minutes</strong> (depending on skip logic). Optimal survey lengths are usually significantly linked the way the questions are designed and to the fact that respondents have interest in answering the survey and can trust that their data will be treated in an anonymous way. Optimal survey duration also depends on data collection mode (self-administered or interview) and both abandon rates and interview attention focus increase significantly with the number of questions includes in the questionnaire.</p>
-<p>For both, <a href="https://www.unhcr.org/en-us/60804b214.pdf#page=7">Education</a> and <a href="https://www.unhcr.org/5ea81b954.pdf">Employment</a>, indicators were already classified as <strong>basic, standard &amp; optional</strong>. This can help defining a process where:</p>
+<p>For both, <a href="https://www.unhcr.org/en-us/60804b214.pdf#page=7" class="external-link">Education</a> and <a href="https://www.unhcr.org/5ea81b954.pdf" class="external-link">Employment</a>, indicators were already classified as <strong>basic, standard &amp; optional</strong>. This can help defining a process where:</p>
 <ul>
 <li>Each questionnaire should systematically include all core questions to calculate basic indicators</li>
 <li>Depending on the quarterly data collection round, a different set of standard indicators, corresponding to one or more questions modules, can be prioritized</li>
 <li>After calculating the remaining potential interview time, once core &amp; standard indicators, optional indicators can be added though supplementary and contextualisable questions</li>
 </ul>
 </div>
-<div id="generate-machine-readable-codebook" class="section level3">
-<h3 class="hasAnchor">
-<a href="#generate-machine-readable-codebook" class="anchor"></a>Generate machine-readable codebook</h3>
+<div class="section level3">
+<h3 id="generate-machine-readable-codebook">Generate machine-readable codebook<a class="anchor" aria-label="anchor" href="#generate-machine-readable-codebook"></a>
+</h3>
 <p>A survey designer is not expected to be only a form-builder, but rather a codebook generator.</p>
 <blockquote>
-<p>A codebook describes the contents, structure, and layout of a data collection. A well-documented codebook "contains information intended to be complete and self-explanatory for each variable in a data file</p>
+<p>A codebook describes the contents, structure, and layout of a data collection. A well-documented codebook “contains information intended to be complete and self-explanatory for each variable in a data file</p>
 </blockquote>
 </div>
-<div id="track-calculation-for-calculatedderived-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#track-calculation-for-calculatedderived-variables" class="anchor"></a>Track calculation for calculated/derived variables</h3>
-<p>In many cases, standard indicators are not directly generated though a question but rather through a combination of questions, grouped together with a specific formula. This is the case for instance for the <a href="https://www.ilo.org/ilostat-files/LFS/CAPI_JobType_V3_Full.zip">ILO Employement indicators</a>. as the survey designer shall enforce a standardized codebook, it shall be also possible to enforce the same standardized calculation.</p>
+<div class="section level3">
+<h3 id="track-calculation-for-calculatedderived-variables">Track calculation for calculated/derived variables<a class="anchor" aria-label="anchor" href="#track-calculation-for-calculatedderived-variables"></a>
+</h3>
+<p>In many cases, standard indicators are not directly generated though a question but rather through a combination of questions, grouped together with a specific formula. This is the case for instance for the <a href="https://www.ilo.org/ilostat-files/LFS/CAPI_JobType_V3_Full.zip" class="external-link">ILO Employement indicators</a>. as the survey designer shall enforce a standardized codebook, it shall be also possible to enforce the same standardized calculation.</p>
 </div>
 </div>
-<div id="technical-requirements-for-the-interface" class="section level2">
-<h2 class="hasAnchor">
-<a href="#technical-requirements-for-the-interface" class="anchor"></a>Technical Requirements for the interface</h2>
-<div id="document-data-collection-per-anticipation-and-early-on" class="section level3">
-<h3 class="hasAnchor">
-<a href="#document-data-collection-per-anticipation-and-early-on" class="anchor"></a>Document data collection per anticipation and early-on</h3>
-<div id="configure-per-default-the-correct-p-code-for-admin-unit-in-the-country" class="section level4">
-<h4 class="hasAnchor">
-<a href="#configure-per-default-the-correct-p-code-for-admin-unit-in-the-country" class="anchor"></a>1. Configure per default the correct P-code for admin unit in the country</h4>
-<p>Using <a href="https://www.humanitarianresponse.info/en/help/cod-pcodes-use-hrinfo">P-code</a> is critical to ensure that the recording of location is done in a smooth way. When designing a form, it is essential that the usage of standardized p-code is enforced for each country.</p>
+<div class="section level2">
+<h2 id="technical-requirements-for-the-interface">Technical Requirements for the interface<a class="anchor" aria-label="anchor" href="#technical-requirements-for-the-interface"></a>
+</h2>
+<div class="section level3">
+<h3 id="document-data-collection-per-anticipation-and-early-on">Document data collection per anticipation and early-on<a class="anchor" aria-label="anchor" href="#document-data-collection-per-anticipation-and-early-on"></a>
+</h3>
+<div class="section level4">
+<h4 id="configure-per-default-the-correct-p-code-for-admin-unit-in-the-country">1. Configure per default the correct P-code for admin unit in the country<a class="anchor" aria-label="anchor" href="#configure-per-default-the-correct-p-code-for-admin-unit-in-the-country"></a>
+</h4>
+<p>Using <a href="https://www.humanitarianresponse.info/en/help/cod-pcodes-use-hrinfo" class="external-link">P-code</a> is critical to ensure that the recording of location is done in a smooth way. When designing a form, it is essential that the usage of standardized p-code is enforced for each country.</p>
 </div>
-<div id="enforce-the-basic-indicators-that-the-dataset-should-generate" class="section level4">
-<h4 class="hasAnchor">
-<a href="#enforce-the-basic-indicators-that-the-dataset-should-generate" class="anchor"></a>2. Enforce the basic indicators that the dataset should generate:</h4>
+<div class="section level4">
+<h4 id="enforce-the-basic-indicators-that-the-dataset-should-generate">2. Enforce the basic indicators that the dataset should generate:<a class="anchor" aria-label="anchor" href="#enforce-the-basic-indicators-that-the-dataset-should-generate"></a>
+</h4>
 <p>There a multiple analysis framework that</p>
-<p>1- <a href="https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94">International Recomendations on Refugee Statistics (EGRIS)</a>, most indicators there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by <a href="https://unstats.un.org/sdgs/metadata/">UN Statistics</a>), UNHCR has highlighted the list of <a href="https://www.unhcr.org/5fd237b84/data-disaggregation-sdg-indicators-forced-displacement">Data disaggregation of SDG indicators by forced displacement</a>;</p>
+<p>1- <a href="https://www.jips.org/uploads/2019/09/EGRIS-IRRS-IntRecommendationsRefugeeStatistics-EN.pdf#page=94" class="external-link">International Recomendations on Refugee Statistics (EGRIS)</a>, most indicators there refers to SDG indicators, for which guidance in terms of specific survey questions are documented by <a href="https://unstats.un.org/sdgs/metadata/" class="external-link">UN Statistics</a>), UNHCR has highlighted the list of <a href="https://www.unhcr.org/5fd237b84/data-disaggregation-sdg-indicators-forced-displacement" class="external-link">Data disaggregation of SDG indicators by forced displacement</a>;</p>
 <p><img src="../inst/sdg.jpg"></p>
-<p>2- <a href="https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf">Protection Analysis Framework (PAF)</a>;</p>
-<p>3- <a href="https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf">Severity analysis (JIAF)</a>;</p>
-<p>4- <a href="https://docs.wfp.org/api/documents/WFP-0000113729/download/">Vulnerability Analysis</a>;</p>
-<p>5- <a href="https://intranet.unhcr.org/en/protection-programme/compass/COMPASS_Guidance/Guidance_6.html">Situation Analysis (SitAn)</a>.</p>
+<p>2- <a href="https://www.globalprotectioncluster.org/wp-content/uploads/Introduction-to-the-PAF.pdf" class="external-link">Protection Analysis Framework (PAF)</a>;</p>
+<p>3- <a href="https://assessments.hpc.tools/sites/default/files/km/03.HPC_2021-JIAF_Guide.pdf" class="external-link">Severity analysis (JIAF)</a>;</p>
+<p>4- <a href="https://docs.wfp.org/api/documents/WFP-0000113729/download/" class="external-link">Vulnerability Analysis</a>;</p>
+<p>5- <a href="https://intranet.unhcr.org/en/protection-programme/compass/COMPASS_Guidance/Guidance_6.html" class="external-link">Situation Analysis (SitAn)</a>.</p>
 </div>
-<div id="define-which-modules-shall-be-used-which-indicators-is-expected-to-be-calculated" class="section level4">
-<h4 class="hasAnchor">
-<a href="#define-which-modules-shall-be-used-which-indicators-is-expected-to-be-calculated" class="anchor"></a>3. Define which Modules shall be used &amp; which Indicators is expected to be calculated</h4>
+<div class="section level4">
+<h4 id="define-which-modules-shall-be-used-which-indicators-is-expected-to-be-calculated">3. Define which Modules shall be used &amp; which Indicators is expected to be calculated<a class="anchor" aria-label="anchor" href="#define-which-modules-shall-be-used-which-indicators-is-expected-to-be-calculated"></a>
+</h4>
 </div>
-<div id="define-which-data-collection-mode-will-be-used" class="section level4">
-<h4 class="hasAnchor">
-<a href="#define-which-data-collection-mode-will-be-used" class="anchor"></a>4. Define which Data Collection Mode will be used</h4>
+<div class="section level4">
+<h4 id="define-which-data-collection-mode-will-be-used">4. Define which Data Collection Mode will be used<a class="anchor" aria-label="anchor" href="#define-which-data-collection-mode-will-be-used"></a>
+</h4>
 <ul>
 <li><p>Interview (Face-to-face or remote),</p></li>
 <li><p>Self-administered (online form)</p></li>
 <li><p>Case management (embedded during regular interaction at reception centers or community centers)</p></li>
 </ul>
 </div>
-<div id="pre-record-survey-metadata" class="section level4">
-<h4 class="hasAnchor">
-<a href="#pre-record-survey-metadata" class="anchor"></a>5. Pre-record Survey Metadata</h4>
-<p>Data Documentation is now covered by the <a href="https://ddialliance.org/">DDI Standard</a> whcih describes data produced by surveys and other observational methods in the social, behavioral, economic, and health sciences.</p>
+<div class="section level4">
+<h4 id="pre-record-survey-metadata">5. Pre-record Survey Metadata<a class="anchor" aria-label="anchor" href="#pre-record-survey-metadata"></a>
+</h4>
+<p>Data Documentation is now covered by the <a href="https://ddialliance.org/" class="external-link">DDI Standard</a> whcih describes data produced by surveys and other observational methods in the social, behavioral, economic, and health sciences.</p>
 <p>DDI is a free standard that can document and manage different stages in the research data life cycle, such as conceptualization, collection, processing, distribution, discovery, and archiving. Documenting data with DDI facilitates understanding, interpretation, and use – by people, software systems, and computer networks. DDI allows to both Document, Discover, and Interoperate!</p>
 <p>Describe of the study motivating the data collection: - who is expected to collect the data (direct implementation, partners through a project partnership agreement, partners through a memorandum of understanding, contracted company…) - Sampling information: what is the population to be studied, how the sample will be drawn…</p>
 </div>
 </div>
-<div id="create-points-of-control-on-supplementary-questions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-points-of-control-on-supplementary-questions" class="anchor"></a>Create Points of control on supplementary questions</h3>
+<div class="section level3">
+<h3 id="create-points-of-control-on-supplementary-questions">Create Points of control on supplementary questions<a class="anchor" aria-label="anchor" href="#create-points-of-control-on-supplementary-questions"></a>
+</h3>
 <ul>
 <li><p>Check variable names – has meaning, starts with a letter, can use lowerUpper cases – meaningful, not random string.</p></li>
 <li><p>Keep existing questions as they are, name new ones.</p></li>
@@ -191,14 +187,14 @@
 <li><p>Consider how the person would react to the question – is it too invasive? How likely are they to answer truthfully? Is the terminology difficult to understand?</p></li>
 </ul>
 </div>
-<div id="export-questionaire-validate-revised-questionnaire" class="section level3">
-<h3 class="hasAnchor">
-<a href="#export-questionaire-validate-revised-questionnaire" class="anchor"></a>Export questionaire &amp; validate revised questionnaire</h3>
+<div class="section level3">
+<h3 id="export-questionaire-validate-revised-questionnaire">Export questionaire &amp; validate revised questionnaire<a class="anchor" aria-label="anchor" href="#export-questionaire-validate-revised-questionnaire"></a>
+</h3>
 <p>Once initially design the questionnaire needs to be outputed as:</p>
 <ul>
-<li>Valid XlsForm - that go through validation <a href="https://opendatakit.org/xlsform/">here for instance</a>
+<li>Valid XlsForm - that go through validation <a href="https://opendatakit.org/xlsform/" class="external-link">here for instance</a>
 </li>
-<li>In order to avoid having in parallel a word version and an encoded version of the questionnaire, a Pretty printed version of the original contextualized XlsForm questionnaire should be generated in either doc, html or PDF, like the one generated by <a href="https://github.com/pmaengineering/ppp">The Pretty PDF Printer–Converting XlsForm Excel files into “paper questionnaires”</a>
+<li>In order to avoid having in parallel a word version and an encoded version of the questionnaire, a Pretty printed version of the original contextualized XlsForm questionnaire should be generated in either doc, html or PDF, like the one generated by <a href="https://github.com/pmaengineering/ppp" class="external-link">The Pretty PDF Printer–Converting XlsForm Excel files into “paper questionnaires”</a>
 </li>
 </ul>
 <p><img src="../inst/demo.png"></p>
@@ -208,13 +204,13 @@
 <p>As part of the questionnaire design workflow, it is expected that the survey expert will circulate the initial draft questionnaire for review and comments. The survey export should therefore be able to upload a revised xlsform to the interface and get a validation report (comparing the contextualised version with the master for confirmation that the contextualisation is done in the scope of the acceptable standard)</p>
 </div>
 </div>
-<div id="limitations-of-existing-solutions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#limitations-of-existing-solutions" class="anchor"></a>Limitations of existing solutions</h2>
-<div id="kobotoolbox-question-library" class="section level3">
-<h3 class="hasAnchor">
-<a href="#kobotoolbox-question-library" class="anchor"></a>Kobotoolbox Question Library</h3>
-<p>Within kobotoolbox, Questions that have previously been added to a <a href="https://support.kobotoolbox.org/question_library.html">Question Library</a> can be added to any other form by drag-and-dropping them from the Question Library sidebar within the formbuilder.</p>
+<div class="section level2">
+<h2 id="limitations-of-existing-solutions">Limitations of existing solutions<a class="anchor" aria-label="anchor" href="#limitations-of-existing-solutions"></a>
+</h2>
+<div class="section level3">
+<h3 id="kobotoolbox-question-library">Kobotoolbox Question Library<a class="anchor" aria-label="anchor" href="#kobotoolbox-question-library"></a>
+</h3>
+<p>Within kobotoolbox, Questions that have previously been added to a <a href="https://support.kobotoolbox.org/question_library.html" class="external-link">Question Library</a> can be added to any other form by drag-and-dropping them from the Question Library sidebar within the formbuilder.</p>
 <p><img src="../inst/library.jpg"></p>
 <p>This feature has the following constraints:</p>
 <ul>
@@ -224,10 +220,10 @@
 <li>Does not allow for questionnaire post-validation</li>
 </ul>
 </div>
-<div id="wfp-survey-designer" class="section level3">
-<h3 class="hasAnchor">
-<a href="#wfp-survey-designer" class="anchor"></a>WFP Survey Designer</h3>
-<p><a href="https://dev.surveydesigner.vam.wfp.org">WFP Survey Designer</a> seems to address the technical requirements and use case. but</p>
+<div class="section level3">
+<h3 id="wfp-survey-designer">WFP Survey Designer<a class="anchor" aria-label="anchor" href="#wfp-survey-designer"></a>
+</h3>
+<p><a href="https://dev.surveydesigner.vam.wfp.org" class="external-link">WFP Survey Designer</a> seems to address the technical requirements and use case. but</p>
 <p><img src="../inst/home_page_screen.png"></p>
 <p>This application though has the following constraints:</p>
 <ul>
@@ -238,19 +234,24 @@
 <li>Does not allow for questionnaire post-validation</li>
 </ul>
 </div>
-<div id="ilo-labour-force-survey-programme-builder" class="section level3">
-<h3 class="hasAnchor">
-<a href="#ilo-labour-force-survey-programme-builder" class="anchor"></a>ILO Labour Force Survey Programme builder</h3>
-<p><a href="https://ilostat.ilo.org/resources/lfs-resources/#programme_builder">ILO Labour Force Survey Programme builder</a> is designed to also help to the generation of contextualised questionnaire</p>
+<div class="section level3">
+<h3 id="ilo-labour-force-survey-programme-builder">ILO Labour Force Survey Programme builder<a class="anchor" aria-label="anchor" href="#ilo-labour-force-survey-programme-builder"></a>
+</h3>
+<p><a href="https://ilostat.ilo.org/resources/lfs-resources/#programme_builder" class="external-link">ILO Labour Force Survey Programme builder</a> is designed to also help to the generation of contextualised questionnaire</p>
 <p><img src="../inst/ilo.jpg"><br>
 This application though is not compatible with xlsform.</p>
 </div>
+<div class="section level3">
+<h3 id="mockup">Mockup<a class="anchor" aria-label="anchor" href="#mockup"></a>
+</h3>
+<p><img src="../reference/figures/proto.png"></p>
 </div>
-<div id="required-standard-for-the-master-xlsform" class="section level2">
-<h2 class="hasAnchor">
-<a href="#required-standard-for-the-master-xlsform" class="anchor"></a>Required Standard for the master xlsform</h2>
-<p>An initial example of a question bank is <a href="https://github.com/unhcr-americas/surveyDesigner/blob/main/inst/XlsForm_master.xlsx">here</a></p>
-<p>The proposal is to follow a standard generally follows the <a href="https://xlsform.org/en/">XLSForm format</a> an compatible with the one used by Kobotoolbox library, meaning a few additional columns specifying filtering capacity:</p>
+</div>
+<div class="section level2">
+<h2 id="required-standard-for-the-master-xlsform">Required Standard for the master xlsform<a class="anchor" aria-label="anchor" href="#required-standard-for-the-master-xlsform"></a>
+</h2>
+<p>An initial example of a question bank is <a href="https://github.com/unhcr-americas/surveyDesigner/blob/main/inst/XlsForm_master.xlsx" class="external-link">here</a></p>
+<p>The proposal is to follow a standard generally follows the <a href="https://xlsform.org/en/" class="external-link">XLSForm format</a> an compatible with the one used by Kobotoolbox library, meaning a few additional columns specifying filtering capacity:</p>
 <ul>
 <li><p>Question <strong>blocks</strong> : label has no limitations in terms of characters, but it needs to be the exact same spelling to avoid breaking the block up (’Household questions’ is different from ‘household questions’). Use a block title that makes it easy to identify the contents later on. Any row in the template sheet that doesn’t have a value in the block column will be imported as a separate question.</p></li>
 <li><p>Question <strong>tags</strong> for the question or block. Each additional tag is created by adding a column <a href="tag:%5Byour" class="uri">tag:[your</a> tag name] for each tag, then writing ‘1’ in each row that should use the tag. In the case of blocks, it’s enough to write ‘1’ in any of the rows in the block regardless which one. It’s enough to mark one of the questions in the block, though it doesn’t matter if several questions are tagged.</p></li>
@@ -259,7 +260,7 @@ This application though is not compatible with xlsform.</p>
 <ul>
 <li><p>skip logic and validation rules within blocks: useful when importing entire blocks of questions into new form drafts without having to rebuild these advanced settings.</p></li>
 <li><p>multiple languages to question and response <strong>labels</strong> with the usual XLSForm syntax (label::English (en), label::Español (es), etc.)</p></li>
-<li><p>multiple languages for labels to be used in <strong>Report</strong> with <a href="https://unhcr.github.io/koboloadeR/docs/">KoboloadeR</a></p></li>
+<li><p>multiple languages for labels to be used in <strong>Report</strong> with <a href="https://unhcr.github.io/koboloadeR/docs/" class="external-link">KoboloadeR</a></p></li>
 </ul>
 </div>
   </div>
@@ -275,11 +276,13 @@ This application though is not compatible with xlsform.</p>
 
 
       <footer><div class="copyright">
-  <p>Developed by Edouard Legoupil.</p>
+  <p></p>
+<p>Developed by Edouard Legoupil.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -287,6 +290,8 @@ This application though is not compatible with xlsform.</p>
 
   
 
+
+  
 
   </body>
 </html>
