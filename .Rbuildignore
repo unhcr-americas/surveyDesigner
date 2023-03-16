@@ -6,3 +6,5 @@ dev_history.R
 $run_dev.*
 ^codecov\.yml$
 ^CODE_OF_CONDUCT\.md$
+^LICENSE\.md$
+^\.github$
