@@ -4,7 +4,6 @@
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/unhcr-americas/surveyDesigner/branch/main/graph/badge.svg)](https://codecov.io/gh/unhcr-americas/surveyDesigner?branch=main)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/unhcr-americas/surveyDesigner/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/unhcr-americas/surveyDesigner/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 
@@ -59,6 +58,15 @@ devtools::document()
 devtools::check(document = FALSE)
 
 pkgdown::build_site()
+```
+
+## As dev :
+
+Please use template commit and MR :
+
+``` r
+project_path <- "path_to_surveyDesigner"
+gert::git_config_set(repo = project_path, name = "commit.template", value = ".github/template_commit")
 ```
 
 ## Code of Conduct
