@@ -1,0 +1,81 @@
+---
+title: "flat_r6_referential.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+library(readxl)
+
+```
+
+# r6_referential
+
+```{r function-r6_referential}
+#' Referential class is a class to load, check and manipulate the XLSForm 
+#'
+
+Referential <- R6::R6Class(classname = "Referential",
+                           public = list(
+                             #' @description 
+                             #' read the xlsx for each sheet and return a named list
+                             #' @param path path to the xlsForm
+                             #' @return named list
+                             initialize = function(path){
+                               # Define path
+                               self$path <- path
+                               
+                               # Get sheets of xlsx
+                               sheets <- excel_sheets(path)
+                               
+                               # Read the xlsx file 
+                               self$data <- lapply(sheets, function(x){readxl::read_xlsx(path = path, sheet = x)}) |> setNames(nm = sheets)
+                             },
+                             #' @field data named list for the xlsx file
+                             data = list(),
+                             #' @field path path for the xlsx file
+                             path  = character(0)
+                           ),
+                           private = list(
+                             
+                           )
+)
+```
+
+```{r development-test}
+ref <- Referential$new(
+  path = system.file("XlsForm_master.xlsx", package = "surveyDesigner") 
+)
+
+koboloadeR::kobo_get_begin_repeat("XlsForm_master.xlsx")
+```
+
+
+```{r examples-r6_referential}
+ref <- Referential$new(
+  path = system.file("XlsForm_master.xlsx", package = "surveyDesigner") 
+)
+
+head(ref$data$survey)
+```
+
+```{r tests-r6_referential}
+test_that("r6_referential works", {
+  
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_r6_referential.Rmd", vignette_name = "Go further")
+```
+
