@@ -8,20 +8,25 @@ Authors@R: c(
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports: 
-    attempt,
     config (>= 0.3.1),
-    DT,
-    glue,
+    dplyr,
     golem (>= 0.3.1),
     htmltools,
-    processx,
+    magrittr,
+    purrr,
+    R6,
+    readxl,
     shiny (>= 1.6.0)
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1
 Suggests: 
+    knitr,
+    prettydoc,
+    rmarkdown,
     spelling,
-    covr,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
+Encoding: UTF-8
 Language: en-US
+LazyData: true
+RoxygenNote: 7.2.3
