@@ -25,16 +25,18 @@ Issues
 
 issue #
 
-# Explication des tags:
-# ci : tout ce qui touche au ci, meme les fix du ci pour l'instant
-# fix : correction d'un bug dans la code base
-# feat : l'ajout d'une nouvelle feature
-# doc : doc du package, on devrait voir que ça la sur ces 3 jours en gros
-# test: pour les tests unitaires
-# refactor : Refactoring de code, comme de la factorisation, du déplacement de code
-# style : pour la mise en forme de code, tabulation, ...
-# chore: tout ce qui touche au projet en lui même, des tâches de fond classiques,
-#   comme une montée de version
+# Explication for tags:
+# ci : everything related to ci, even the ci fix for the moment
+# fix : fix a bug in the code base
+# feat : the addition of a new feature
+# doc: package doc, we should see that on these 3 days roughly
+# test: for unit tests
+# refactor : Refactoring of code, like factoring, moving code
+# style: for code formatting, tabulation, ...
+# chore: everything that touches the project itself, classic background tasks, like a version upgrade
+
+# Exemple of commit
+# [feat]: a wonderful new feature - part 1
 
 # Exemple of commit
 # feat: a wonderful new feature - part 1
