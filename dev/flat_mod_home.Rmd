@@ -1,0 +1,70 @@
+---
+title: "flat_mod_home.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# mod_home
+
+```{r function-mod_home}
+#' home UI Function
+#'
+#' @description A shiny Module.
+#'
+#' @param id,input,output,session Internal parameters for {shiny}.
+#'
+#' @noRd 
+#'
+#' @importFrom shiny NS tagList 
+mod_home_ui <- function(id){
+  ns <- NS(id)
+  tagList(
+ 
+  )
+}
+    
+#' home Server Functions
+#'
+#' @noRd 
+mod_home_server <- function(id){
+  moduleServer( id, function(input, output, session){
+    ns <- session$ns
+ 
+  })
+}
+    
+## To be copied in the UI
+# mod_home_ui("home_1")
+    
+## To be copied in the server
+# mod_home_server("home_1")
+
+```
+
+```{r examples-mod_home}
+
+```
+
+```{r tests-mod_home}
+test_that("mod_home works", {
+
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_mod_home.Rmd", vignette_name = "Mon module home")
+```
+
