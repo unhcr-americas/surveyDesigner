@@ -27,7 +27,7 @@ With XlsForm, we can not filter as we want because the order inside the file is 
 
 ```{r examples-r6_referential}
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)

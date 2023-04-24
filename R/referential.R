@@ -16,7 +16,7 @@ Referential <- R6::R6Class(classname = "Referential",
                              #' @return named list
 #' @examples
 #' ref <- Referential$new(
-#'   path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+#'   path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 #' )
 #' 
 #' head(ref$data$survey)

@@ -15,7 +15,7 @@ Referential class is a class to load, check and manipulate the XLSForm
 ## ------------------------------------------------
 
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)
@@ -64,7 +64,7 @@ named list
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)

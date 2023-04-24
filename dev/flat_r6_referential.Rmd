@@ -84,14 +84,14 @@ Referential <- R6::R6Class(classname = "Referential",
 
 ```{r development-test}
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 ```
 
 
 ```{r examples-r6_referential}
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)
@@ -103,7 +103,7 @@ ref$by_groups$group_intro
 ```{r tests-r6_referential}
 test_that("r6_referential works", {
   ref <- Referential$new(
-    path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+    path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
   )
   
   expect_true( inherits(ref, "R6") )
@@ -168,14 +168,14 @@ survey_designer <- new.env()
 
 assign(
   "names_sheets", 
-  c("survey",
+  c("referential_type",
+    "survey",
     "choices",
     "Indicator",
     "Indicator_survey",
     "indicator_choices", 
     "indicator_population",
-    "indicator_dissagregation", 
-    "country_language"
+    "indicator_dissagregation"
   ), 
   envir = survey_designer)
 
@@ -270,7 +270,7 @@ test_that("utils_xlsform works", {
   expect_true(inherits(get_groups, "function")) 
   
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 result <- get_groups(ref$data$survey)
