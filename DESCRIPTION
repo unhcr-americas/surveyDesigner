@@ -2,7 +2,7 @@ Package: surveyDesigner
 Title: An Amazing Shiny App
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Edouard", "Legoupil", , "edouard.legoupil@gmail.com", role = c("aut", "cre")),
+    person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "cre")),
     person("Cervan", "Girard", , "cervan@thinkr.fr", role = "aut")
   )
 Description: What the package does (one paragraph).
