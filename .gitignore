@@ -29,3 +29,4 @@ vignettes/*.pdf
 surveyDesigner.Rproj
 !.github/*/*
 inst/doc
+rsconnect
