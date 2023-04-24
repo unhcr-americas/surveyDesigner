@@ -1,0 +1,177 @@
+---
+title: "questionnaire Object"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+library(readxl)
+library(dplyr)
+library(purrr)
+
+```
+
+# r6_Questionnaire
+
+
+A questionnaire is created a list of one or multiple [XlsForm](http://xlsform.org)
+
+```{r function-r6_questionnaire}
+#' questionnaire class is a class to load, check and manipulate one or more than one XLSForm 
+#' @importFrom R6 R6Class
+#' 
+#' @export
+
+questionnaire <- R6::R6Class(classname = "questionnaire",
+                           public = list(
+                             #' @description 
+                             #' read the xlsx for each sheet and return a named list
+                             #' @param path path to the xlsForm
+                             #' 
+                             #' @importFrom readxl excel_sheets read_xlsx
+                             #' 
+                             #' @return named list
+                             initialize = function(path){
+                               # Define path
+                               self$path <- path
+                               
+                               # Get sheets of xlsx
+                               sheets <- names_of_sheet(path)
+                               
+                               # Read the xlsx file 
+                               data <- lapply(
+                                 sheets, 
+                                 function(x){
+                                   read_xlsx(path = path, sheet = x)}) |>
+                                      setNames(nm = sheets)
+                               # TODO checking survey and other sheets
+                               
+                               # survey have to be a xlsform
+                               if(!is_a_xlsfrom(data$survey)){
+                                 stop("the sheet 'survey' dosen't seem to be a xlsform")
+                               }
+                               
+                               self$data <- data
+                               
+                               # Get groups 
+                               
+                               self$get_groups()
+                             }
+                           ),
+                           private = list(
+                             
+                           )
+)
+```
+
+```{r development-test}
+ref <- questionnaire$new(
+  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+)
+```
+
+
+```{r examples-r6_questionnaire}
+ref <- questionnaire$new(
+  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+)
+
+head(ref$data$survey)
+
+# Example by groups
+ref$by_groups$group_intro
+```
+
+```{r tests-r6_questionnaire}
+test_that("r6_questionnaire works", {
+  ref <- questionnaire$new(
+    path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  )
+  
+  expect_true( inherits(ref, "R6") )
+  
+  expect_error(
+    questionnaire$new(
+      path = "not_good_sheet.xlsx" 
+    )
+  )
+  
+  expect_error(
+    questionnaire$new(
+      path = "wt_xlsform_in_survey.xlsx" 
+    )
+  )
+
+})
+```
+
+
+# Utils for xlsx
+    
+```{r development-utils, eval = FALSE}
+
+
+
+
+```
+
+
+```{r function-utils_xlsform}
+survey_designer <- new.env()
+
+assign(
+  "names_sheets", 
+  c("survey",
+    "choices",
+    "Indicator",
+    "Indicator_survey",
+    "indicator_choices", 
+    "indicator_population",
+    "indicator_dissagregation", 
+    "country_language"
+  ), 
+  envir = survey_designer)
+
+
+
+
+#' function to check name of sheets
+#'
+#' @param path path to the xlsform
+#'
+#' @noRd
+names_of_sheet <- function(path){
+  sheets <- excel_sheets(path)
+  if(all(sheets == get("names_sheets", envir = survey_designer))){
+    return(sheets)
+  }else{
+    stop("Problem with the name of sheets")
+  }
+}
+```
+  
+  
+```{r tests-utils_xlsform}
+test_that("utils_xlsform works", {
+  
+
+})
+```
+  
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(
+  flat_file = "dev/flat_r6_questionnaire.Rmd", 
+  vignette_name = "Class R6 for the questionnaire"
+  )
+```
+
