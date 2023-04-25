@@ -39,8 +39,9 @@ Referential <- R6::R6Class(classname = "Referential",
                                # TODO checking survey and other sheets
                                
                                # survey have to be a xlsform
+
                                if(!contains_groups(data$survey)){
-                                 stop("the sheet 'survey' doesn't includes groups")
+                                 stop("the sheet 'survey' doesn't includes groups - i.e. questions organised as module")
                                }
                                
                                self$data <- data
