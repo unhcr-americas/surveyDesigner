@@ -4,7 +4,7 @@ test_that("utils_xlsform works", {
   expect_true(inherits(get_groups, "function")) 
   
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 result <- get_groups(ref$data$survey)

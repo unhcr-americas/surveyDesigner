@@ -9,14 +9,14 @@ Referential <- R6::R6Class(classname = "Referential",
                            public = list(
                              #' @description 
                              #' read the xlsx for each sheet and return a named list
-                             #' @param path path to the xlsForm
+                             #' @param path path to the file with the full referential
                              #' 
                              #' @importFrom readxl excel_sheets read_xlsx
                              #' 
                              #' @return named list
 #' @examples
 #' ref <- Referential$new(
-#'   path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+#'   path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 #' )
 #' 
 #' head(ref$data$survey)
@@ -39,8 +39,8 @@ Referential <- R6::R6Class(classname = "Referential",
                                # TODO checking survey and other sheets
                                
                                # survey have to be a xlsform
-                               if(!is_a_xlsfrom(data$survey)){
-                                 stop("the sheet 'survey' dosen't seem to be a xlsform")
+                               if(!contains_groups(data$survey)){
+                                 stop("the sheet 'survey' doesn't includes groups")
                                }
                                
                                self$data <- data
@@ -49,9 +49,9 @@ Referential <- R6::R6Class(classname = "Referential",
                                
                                self$get_groups()
                              },
-                             #' @field data named list for the xlsx file
+                             #' @field data named list for the referential file
                              data = list(),
-                             #' @field by_groups survey data separate by begin and end to manipulate data
+                             #' @field by_groups survey modules separated by begin and end to manipulate data
                              by_groups = list(),
                              #' @field path path for the xlsx file
                              path  = character(0),
