@@ -10,3 +10,5 @@ $run_dev.*
 ^\.github$
 ^surveyDesigner\.Rproj$
 ^docs$
+^app\.R$
+^rsconnect$

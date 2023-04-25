@@ -57,3 +57,6 @@ rsconnect::deployApp(
   lint = FALSE,
   forceUpdate = TRUE
 )
+
+library(golem)
+add_rstudioconnect_file(pkg = get_golem_wd(), open = TRUE)
