@@ -1,8 +1,8 @@
 ---
-title: "Class R6 for the referencial"
+title: "Class R6 for the referential"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{class-r6-for-the-referencial}
+  %\VignetteIndexEntry{class-r6-for-the-referential}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -39,6 +39,10 @@ ref$by_groups$group_intro
 # Utils for xlsx
 
     
+
+
+ 
+ 
 
   
   

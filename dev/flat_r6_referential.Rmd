@@ -1,5 +1,5 @@
 ---
-title: "flat_r6_referential.Rmd empty"
+title: "Class R6 for the referential"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -295,7 +295,7 @@ expect_type(get_chocies, "list")
 # Execute in the console directly
 fusen::inflate(
   flat_file = "dev/flat_r6_referential.Rmd", 
-  vignette_name = "Class R6 for the referencial"
+  vignette_name = "Class R6 for the referential"
   )
 ```
 

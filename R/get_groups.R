@@ -7,11 +7,11 @@ assign(
   c("referential_type",
     "survey",
     "choices",
-    "Indicator",
-    "Indicator_survey",
+    "indicator",
+    "indicator_survey",
     "indicator_choices", 
     "indicator_population",
-    "indicator_dissagregation"
+    "indicator_disaggregation"
   ), 
   envir = survey_designer)
 
@@ -81,7 +81,7 @@ get_choices_for_question <- function(data, indicator, lg){
 #'
 #' @noRd
 
-is_a_xlsfrom <- function(data){
+contains_group <- function(data){
   any(grepl(x = data[["type"]], pattern = 'begin_group|begin_repeat|end_group|end_repeat'))
 }
 
