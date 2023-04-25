@@ -4,14 +4,12 @@
 \alias{get_choices_for_question}
 \title{Get choices for one question}
 \usage{
-get_choices_for_question(data, indicator, lg)
+get_choices_for_question(survey, full_name)
 }
 \arguments{
-\item{data}{data of choices}
+\item{survey}{data from the choices sheet}
 
-\item{indicator}{the name of the indicator for the question}
-
-\item{lg}{language to use}
+\item{full_name}{the full name (i.e. concatenating groups) for the variable}
 }
 \value{
 a data.frame to join

@@ -15,7 +15,7 @@ Referential class is a class to load, check and manipulate the XLSForm
 ## ------------------------------------------------
 
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)
@@ -26,9 +26,9 @@ ref$by_groups$group_intro
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
-\item{\code{data}}{named list for the xlsx file}
+\item{\code{data}}{named list for the referential file}
 
-\item{\code{by_groups}}{survey data separate by begin and end to manipulate data}
+\item{\code{by_groups}}{survey modules separated by begin and end to manipulate data}
 
 \item{\code{path}}{path for the xlsx file}
 }
@@ -54,7 +54,7 @@ read the xlsx for each sheet and return a named list
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{path}}{path to the xlsForm}
+\item{\code{path}}{path to the file with the full referential}
 }
 \if{html}{\out{</div>}}
 }
@@ -64,7 +64,7 @@ named list
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)
