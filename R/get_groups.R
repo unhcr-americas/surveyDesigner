@@ -9,7 +9,7 @@ assign(
     "choices",
     "indicator",
     "indicator_survey",
-    "indicator_choices", 
+    "indicator_choices",
     "indicator_population",
     "indicator_disaggregation"
   ), 
@@ -18,7 +18,7 @@ assign(
 
 #' Get groups form begin and end into a list with data and information
 #' 
-#' @param data data form the survey sheet
+#' @param data data from the survey sheet
 #'
 #' @importFrom purrr map2 set_names map
 #' @importFrom dplyr slice filter
@@ -62,17 +62,16 @@ by_begin_end <- map2(begin_start, end_stop,
 
 #' Get choices for one question
 #'
-#' @param data data of choices
-#' @param indicator the name of the indicator for the question
-#' @param lg language to use
+#' @param survey data from the choices sheet
+#' @param full_name the full name (i.e. concatenating groups) for the variable
 #'
 #' @importFrom dplyr filter select contains
 #'
 #' @return a data.frame to join
-get_choices_for_question <- function(data, indicator, lg){
-  data %>% 
-    filter(list_name == indicator) %>% 
-    select(list_name, name, contains(lg))
+get_choices_for_question <- function(survey, full_name){
+  survey %>% 
+    filter(list_name == full_name) %>% 
+    select(list_name, name, label)
 }
 
 #' function to find if we manipulate a xlsform
@@ -81,7 +80,8 @@ get_choices_for_question <- function(data, indicator, lg){
 #'
 #' @noRd
 
-contains_group <- function(data){
+
+contains_groups <- function(data){
   any(grepl(x = data[["type"]], pattern = 'begin_group|begin_repeat|end_group|end_repeat'))
 }
 

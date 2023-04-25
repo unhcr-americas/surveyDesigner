@@ -7,7 +7,7 @@
 get_groups(data)
 }
 \arguments{
-\item{data}{data form the survey sheet}
+\item{data}{data from the survey sheet}
 }
 \value{
 list

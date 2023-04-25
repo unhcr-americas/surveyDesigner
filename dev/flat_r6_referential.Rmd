@@ -20,7 +20,9 @@ library(purrr)
 
 # r6_referential
 
-With XlsForm, we can not filter as we want because the order inside the file is important. For me the first thing to do is to separate our file with begin and end group
+The filtering of the referential should take in account the order/sequence of questions and modules. 
+
+A specific method is implemented to separate our file with begin and end group
 
 ```{r function-r6_referential}
 #' Referential class is a class to load, check and manipulate the XLSForm 
@@ -32,7 +34,7 @@ Referential <- R6::R6Class(classname = "Referential",
                            public = list(
                              #' @description 
                              #' read the xlsx for each sheet and return a named list
-                             #' @param path path to the xlsForm
+                             #' @param path path to the file with the full referential
                              #' 
                              #' @importFrom readxl excel_sheets read_xlsx
                              #' 
@@ -53,8 +55,9 @@ Referential <- R6::R6Class(classname = "Referential",
                                # TODO checking survey and other sheets
                                
                                # survey have to be a xlsform
-                               if(!contains_group(data$survey)){
-                                 stop("the sheet 'survey' dosen't groups - i.e. questions organised as module")
+
+                               if(!contains_groups(data$survey)){
+                                 stop("the sheet 'survey' doesn't includes groups - i.e. questions organised as module")
                                }
                                
                                self$data <- data
@@ -63,9 +66,9 @@ Referential <- R6::R6Class(classname = "Referential",
                                
                                self$get_groups()
                              },
-                             #' @field data named list for the xlsx file
+                             #' @field data named list for the referential file
                              data = list(),
-                             #' @field by_groups survey data separate by begin and end to manipulate data
+                             #' @field by_groups survey modules separated by begin and end to manipulate data
                              by_groups = list(),
                              #' @field path path for the xlsx file
                              path  = character(0),
@@ -124,7 +127,7 @@ test_that("r6_referential works", {
 ```
 
 
-# Utils for xlsx
+# Utils for referential manipulation
     
 
 ```{r function-utils_xlsform}
@@ -137,7 +140,7 @@ assign(
     "choices",
     "indicator",
     "indicator_survey",
-    "indicator_choices", 
+    "indicator_choices",
     "indicator_population",
     "indicator_disaggregation"
   ), 
@@ -146,7 +149,7 @@ assign(
 
 #' Get groups form begin and end into a list with data and information
 #' 
-#' @param data data form the survey sheet
+#' @param data data from the survey sheet
 #'
 #' @importFrom purrr map2 set_names map
 #' @importFrom dplyr slice filter
@@ -190,17 +193,16 @@ by_begin_end <- map2(begin_start, end_stop,
 
 #' Get choices for one question
 #'
-#' @param data data of choices
-#' @param indicator the name of the indicator for the question
-#' @param lg language to use
+#' @param survey data from the choices sheet
+#' @param full_name the full name (i.e. concatenating groups) for the variable
 #'
 #' @importFrom dplyr filter select contains
 #'
 #' @return a data.frame to join
-get_choices_for_question <- function(data, indicator, lg){
-  data %>% 
-    filter(list_name == indicator) %>% 
-    select(list_name, name, contains(lg))
+get_choices_for_question <- function(survey, full_name){
+  survey %>% 
+    filter(list_name == full_name) %>% 
+    select(list_name, name, label)
 }
 
 #' function to find if we manipulate a xlsform
@@ -209,7 +211,8 @@ get_choices_for_question <- function(data, indicator, lg){
 #'
 #' @noRd
 
-contains_group <- function(data){
+
+contains_groups <- function(data){
   any(grepl(x = data[["type"]], pattern = 'begin_group|begin_repeat|end_group|end_repeat'))
 }
 
@@ -282,9 +285,9 @@ expect_type(result, "list")
 
 
 expect_true(inherits(get_choices_for_question, "function"))
-get_chocies <- get_choices_for_question(ref$data$choices, "pop_groups", "English")
+get_choices <- get_choices_for_question(ref$data$choices, "pop_groups")
 
-expect_type(get_chocies, "list")
+expect_type(get_choices, "list")
 
 })
 ```
