@@ -80,6 +80,7 @@ get_choices_for_question <- function(survey, full_name){
 #'
 #' @noRd
 
+
 contains_groups <- function(data){
   any(grepl(x = data[["type"]], pattern = 'begin_group|begin_repeat|end_group|end_repeat'))
 }

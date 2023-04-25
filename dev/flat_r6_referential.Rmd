@@ -55,8 +55,9 @@ Referential <- R6::R6Class(classname = "Referential",
                                # TODO checking survey and other sheets
                                
                                # survey have to be a xlsform
+
                                if(!contains_groups(data$survey)){
-                                 stop("the sheet 'survey' doesn't includes groups")
+                                 stop("the sheet 'survey' doesn't includes groups - i.e. questions organised as module")
                                }
                                
                                self$data <- data
@@ -128,42 +129,6 @@ test_that("r6_referential works", {
 
 # Utils for referential manipulation
     
-```{r development-utils, eval = FALSE}
-
-data <- ref$data$survey
-
-begin_start <- grep(x = , "begin_")
-end_stop <- grep(x = data[["type"]], "end_")
-
-
-
-if(length(begin_start) != length(end_stop)){
-  stop("Miss one begin or stop in the data")
-}
-
-if(!all(begin_start < end_stop)){
-  stop("One begin is before a end")
-}
-
-by_begin_end <- purrr::map2(begin_start, end_stop,
-                            function(x,y){
-                              
-                              data_to_get <- data %>% 
-                                slice(x:y)
-                              by_groups <- list(data = data_to_get %>%
-                                                  filter(!type %in% c("begin_group", "end_group")),
-                                                information = data_to_get %>%
-                                                  filter(type %in% c("begin_group", "end_group"))
-                              )
-                              # names(by_groups) <- by_groups[["information"]][["name"]]
-                              
-                              by_groups
-                            }) %>% 
-  purrr::set_names(nm = purrr::map(., ~ .x[["information"]][["name"]][1]))
-
-
-```
-
 
 ```{r function-utils_xlsform}
 survey_designer <- new.env()
@@ -246,6 +211,7 @@ get_choices_for_question <- function(survey, full_name){
 #'
 #' @noRd
 
+
 contains_groups <- function(data){
   any(grepl(x = data[["type"]], pattern = 'begin_group|begin_repeat|end_group|end_repeat'))
 }
@@ -264,6 +230,44 @@ names_of_sheet <- function(path){
   }
 }
 ```
+ 
+ 
+```{r development-utils, eval = FALSE}
+
+data <- ref$data$survey
+
+begin_start <- grep(x = , "begin_")
+end_stop <- grep(x = data[["type"]], "end_")
+
+
+
+if(length(begin_start) != length(end_stop)){
+  stop("Miss one begin or stop in the data")
+}
+
+if(!all(begin_start < end_stop)){
+  stop("One begin is before a end")
+}
+
+by_begin_end <- purrr::map2(begin_start, end_stop,
+                            function(x,y){
+                              
+                              data_to_get <- data %>% 
+                                slice(x:y)
+                              by_groups <- list(data = data_to_get %>%
+                                                  filter(!type %in% c("begin_group", "end_group")),
+                                                information = data_to_get %>%
+                                                  filter(type %in% c("begin_group", "end_group"))
+                              )
+                              # names(by_groups) <- by_groups[["information"]][["name"]]
+                              
+                              by_groups
+                            }) %>% 
+  purrr::set_names(nm = purrr::map(., ~ .x[["information"]][["name"]][1]))
+
+
+```
+
   
   
 ```{r tests-utils_xlsform}
@@ -281,9 +285,9 @@ expect_type(result, "list")
 
 
 expect_true(inherits(get_choices_for_question, "function"))
-get_chocies <- get_choices_for_question(ref$data$choices, "pop_groups", "English")
+get_choices <- get_choices_for_question(ref$data$choices, "pop_groups")
 
-expect_type(get_chocies, "list")
+expect_type(get_choices, "list")
 
 })
 ```
