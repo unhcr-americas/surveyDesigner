@@ -3,6 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   class-r6-for-the-referencial: class-r6-for-the-referencial.html
+  mon-module-home: mon-module-home.html
   surveyDesigner: surveyDesigner.html
-last_built: 2023-04-05T11:55Z
+last_built: 2023-04-26T17:19Z
 
