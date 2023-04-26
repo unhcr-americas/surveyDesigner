@@ -2,7 +2,7 @@
 
 test_that("r6_referential works", {
   ref <- Referential$new(
-    path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+    path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
   )
   
   expect_true( inherits(ref, "R6") )

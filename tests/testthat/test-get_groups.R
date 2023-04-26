@@ -4,7 +4,7 @@ test_that("utils_xlsform works", {
   expect_true(inherits(get_groups, "function")) 
   
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 result <- get_groups(ref$data$survey)
@@ -14,8 +14,8 @@ expect_type(result, "list")
 
 
 expect_true(inherits(get_choices_for_question, "function"))
-get_chocies <- get_choices_for_question(ref$data$choices, "pop_groups", "English")
+get_choices <- get_choices_for_question(ref$data$choices, "pop_groups")
 
-expect_type(get_chocies, "list")
+expect_type(get_choices, "list")
 
 })
