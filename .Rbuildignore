@@ -10,8 +10,5 @@ $run_dev.*
 ^\.github$
 ^surveyDesigner\.Rproj$
 ^docs$
-<<<<<<< HEAD
 ^app\.R$
-=======
->>>>>>> 5d46f08550c1eb5c6e5e288d470fff79faa8a585
 ^rsconnect$
