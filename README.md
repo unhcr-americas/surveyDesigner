@@ -15,7 +15,7 @@ For the end-user, aka the Survey Coordinator at Operation level, the application
   
   2. Ease the __contextualization process__ from the global referential to the actual implementation in each country (i.e translating and adjusting the labels as per the specific context) and facilitate the feedback loop so that if the same ad-hoc questions are used in multiple context, they can be considered for inclusion in the global referential 
   
-  3. Support the usage of [mixed-mode (CAPI/CATI?CAWI)](https://www.youtube.com/watch?v=qRmy2OAnyWc) and multiple data collection waves to collect the final dataset within an __annual survey data collection cycle__, all of this allowing both to promote survey integration and to maximize the financial resources invested in those activities  
+  3. Support the usage of [mixed-mode (CAPI/CATI/CAWI)](https://www.youtube.com/watch?v=qRmy2OAnyWc) and multiple data collection waves to collect the final dataset within an __annual survey data collection cycle__, all of this allowing both to promote survey integration and to maximize the financial resources invested in those activities  
 
 Overall, this will contribute over time to the creation of [standardized survey-based indicators](https://egrisstats.org/resource/data-disaggregation-of-sdg-indicators-by-forced-displacement/) for comparative data analysis across countries and contexts.
 
@@ -24,7 +24,8 @@ Read more on the rationale for this app in the [vignette](https://unhcr-americas
 
 ## Run the app  
 
-The app is still under development - the prototype is accessible here: https://rstudio.unhcr.org/Survey_Designer/ 
+
+:warning: *surveyDesigner is currently under development...* :construction: - the prototype is accessible here: https://rstudio.unhcr.org/Survey_Designer/ 
 
 To run it locally, use
 
