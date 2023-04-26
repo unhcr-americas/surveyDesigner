@@ -1,8 +1,8 @@
 ---
-title: "Class R6 for the referencial"
+title: "Class R6 for the referential"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{class-r6-for-the-referencial}
+  %\VignetteIndexEntry{class-r6-for-the-referential}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -22,12 +22,14 @@ library(surveyDesigner)
 
 # r6_referential
 
-With XlsForm, we can not filter as we want because the order inside the file is important. For me the first thing to do is to separate our file with begin and end group
+The filtering of the referential should take in account the order/sequence of questions and modules. 
+
+A specific method is implemented to separate our file with begin and end group
 
 
 ```{r examples-r6_referential}
 ref <- Referential$new(
-  path = system.file("household_survey_americas.xlsx", package = "surveyDesigner") 
+  path = system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") 
 )
 
 head(ref$data$survey)
@@ -36,9 +38,13 @@ head(ref$data$survey)
 ref$by_groups$group_intro
 ```
 
-# Utils for xlsx
+# Utils for referential manipulation
 
     
+
+
+ 
+ 
 
   
   
