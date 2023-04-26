@@ -36,7 +36,7 @@ Referential class is a class to load, check and manipulate the XLSForm"><!-- mat
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/class-r6-for-the-referencial.html">Class R6 for the referencial</a>
+      <a href="../articles/class-r6-for-the-referential.html">Class R6 for the referential</a>
     </li>
   </ul></li>
 <li>
@@ -65,11 +65,11 @@ Referential class is a class to load, check and manipulate the XLSForm"><!-- mat
     <div id="public-fields">
     <h2>Public fields</h2>
     <p></p><div class="r6-fields"><dl><dt><code>data</code></dt>
-<dd><p>named list for the xlsx file</p></dd>
+<dd><p>named list for the referential file</p></dd>
 
 
 <dt><code>by_groups</code></dt>
-<dd><p>survey data separate by begin and end to manipulate data</p></dd>
+<dd><p>survey modules separated by begin and end to manipulate data</p></dd>
 
 
 <dt><code>path</code></dt>
@@ -97,7 +97,7 @@ Referential class is a class to load, check and manipulate the XLSForm"><!-- mat
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>path</code></dt>
-<dd><p>path to the xlsForm</p></dd>
+<dd><p>path to the file with the full referential</p></dd>
 
 
 </dl><p></p></div>
@@ -109,7 +109,7 @@ Referential class is a class to load, check and manipulate the XLSForm"><!-- mat
 <div class="section">
 <h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">ref</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Referential.html">Referential</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"household_survey_americas.xlsx"</span>, package <span class="op">=</span> <span class="st">"surveyDesigner"</span><span class="op">)</span> </span>
+<span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"SurveyDesigner_Referential.xlsx"</span>, package <span class="op">=</span> <span class="st">"surveyDesigner"</span><span class="op">)</span> </span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ref</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">survey</span><span class="op">)</span></span>
@@ -155,55 +155,63 @@ Referential class is a class to load, check and manipulate the XLSForm"><!-- mat
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">ref</span> <span class="op">&lt;-</span> <span class="va">Referential</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"household_survey_americas.xlsx"</span>, package <span class="op">=</span> <span class="st">"surveyDesigner"</span><span class="op">)</span> </span></span>
+<span class="r-in"><span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"SurveyDesigner_Referential.xlsx"</span>, package <span class="op">=</span> <span class="st">"surveyDesigner"</span><span class="op">)</span> </span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `` -&gt; `...14`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> result is store in `by_groups` sub-element</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ref</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">survey</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   type    name  `label::English (en)` `label::Spanish (es)` `label::French (fr)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> start   start <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> end     end   <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> calcul… star… <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> calcul… end_t <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> calcul… time… Time difference in s… <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> calcul… time… Time difference in m… <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: `label::Arabic (ar)` &lt;chr&gt;, `hint::English (en)` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `hint::Spanish (es)` &lt;chr&gt;, `hint::French (fr)` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `hint::Arabic (ar)` &lt;chr&gt;, required &lt;chr&gt;, appearance &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   choice_filter &lt;chr&gt;, calculation &lt;chr&gt;, relevant &lt;chr&gt;, constraint &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   constraint_message &lt;chr&gt;, repeat_count &lt;chr&gt;, `$given_name` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 33</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   referential_id   type   name  label hint  required required_message constraint</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> household_survey start  start <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> household_survey end    end   <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> household_survey calcu… star… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> household_survey calcu… end_t <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> household_survey calcu… time… Time… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> household_survey calcu… time… Time… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more variables: constraint_message &lt;chr&gt;, relevant &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   appearance &lt;chr&gt;, calculation &lt;chr&gt;, trigger &lt;lgl&gt;, parameters &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   repeat_count &lt;chr&gt;, default &lt;lgl&gt;, read_only &lt;lgl&gt;, choice_filter &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `media::image` &lt;lgl&gt;, `$given_name` &lt;chr&gt;, contextualize &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contextualize_instruction &lt;lgl&gt;, block &lt;lgl&gt;, block_sequence &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sequence &lt;lgl&gt;, mode &lt;chr&gt;, check &lt;lgl&gt;, accuracy &lt;lgl&gt;, chapter &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   subchapter &lt;lgl&gt;, labelReport &lt;lgl&gt;, hintReport &lt;lgl&gt;, keyword &lt;lgl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example by groups</span></span></span>
 <span class="r-in"><span><span class="va">ref</span><span class="op">$</span><span class="va">by_groups</span><span class="op">$</span><span class="va">group_intro</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   type    name  `label::English (en)` `label::Spanish (es)` `label::French (fr)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> date    inte… Please enter the dat… Por favor, introduzc… Sélectionnez la dat…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> select… Bure… Please select the Re… Seleccione la Oficin… Sélectionnez le bur…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> select… Coun… Please select the co… Seleccione el país e… Sélectionnez le pay…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> calcul… coun… <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> geopoi… geop… Record your current … Registre su ubicació… Enregistrez votre p…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> select… pop_… Please select which … Seleccione el grupo … Sélectionnez le gro…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: `label::Arabic (ar)` &lt;chr&gt;, `hint::English (en)` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `hint::Spanish (es)` &lt;chr&gt;, `hint::French (fr)` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `hint::Arabic (ar)` &lt;chr&gt;, required &lt;chr&gt;, appearance &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   choice_filter &lt;chr&gt;, calculation &lt;chr&gt;, relevant &lt;chr&gt;, constraint &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   constraint_message &lt;chr&gt;, repeat_count &lt;chr&gt;, `$given_name` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 33</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   referential_id   type   name  label hint  required required_message constraint</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> household_survey date   inte… Plea… <span style="color: #BB0000;">NA</span>    false    <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> household_survey selec… Bure… Plea… Read… true     <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> household_survey selec… Coun… Plea… Read… true     <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> household_survey calcu… coun… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    false    <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> household_survey geopo… geop… Reco… <span style="color: #BB0000;">NA</span>    false    <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> household_survey selec… pop_… Plea… Read… true     <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more variables: constraint_message &lt;chr&gt;, relevant &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   appearance &lt;chr&gt;, calculation &lt;chr&gt;, trigger &lt;lgl&gt;, parameters &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   repeat_count &lt;chr&gt;, default &lt;lgl&gt;, read_only &lt;lgl&gt;, choice_filter &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `media::image` &lt;lgl&gt;, `$given_name` &lt;chr&gt;, contextualize &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contextualize_instruction &lt;lgl&gt;, block &lt;lgl&gt;, block_sequence &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sequence &lt;lgl&gt;, mode &lt;chr&gt;, check &lt;lgl&gt;, accuracy &lt;lgl&gt;, chapter &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   subchapter &lt;lgl&gt;, labelReport &lt;lgl&gt;, hintReport &lt;lgl&gt;, keyword &lt;lgl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $information</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 19</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   type    name  `label::English (en)` `label::Spanish (es)` `label::French (fr)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> begin_… grou… Interview visits      Visitas del entrevis… Visites d'enquête   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> end_gr… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                    <span style="color: #BB0000;">NA</span>                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 14 more variables: `label::Arabic (ar)` &lt;chr&gt;, `hint::English (en)` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `hint::Spanish (es)` &lt;chr&gt;, `hint::French (fr)` &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `hint::Arabic (ar)` &lt;chr&gt;, required &lt;chr&gt;, appearance &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   choice_filter &lt;chr&gt;, calculation &lt;chr&gt;, relevant &lt;chr&gt;, constraint &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   constraint_message &lt;chr&gt;, repeat_count &lt;chr&gt;, `$given_name` &lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 33</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   referential_id   type   name  label hint  required required_message constraint</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> household_survey begin… grou… Inte… <span style="color: #BB0000;">NA</span>    false    <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> household_survey end_g… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>               <span style="color: #BB0000;">NA</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more variables: constraint_message &lt;chr&gt;, relevant &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   appearance &lt;chr&gt;, calculation &lt;chr&gt;, trigger &lt;lgl&gt;, parameters &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   repeat_count &lt;chr&gt;, default &lt;lgl&gt;, read_only &lt;lgl&gt;, choice_filter &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `media::image` &lt;lgl&gt;, `$given_name` &lt;chr&gt;, contextualize &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   contextualize_instruction &lt;lgl&gt;, block &lt;lgl&gt;, block_sequence &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   sequence &lt;lgl&gt;, mode &lt;chr&gt;, check &lt;lgl&gt;, accuracy &lt;lgl&gt;, chapter &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   subchapter &lt;lgl&gt;, labelReport &lt;lgl&gt;, hintReport &lt;lgl&gt;, keyword &lt;lgl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

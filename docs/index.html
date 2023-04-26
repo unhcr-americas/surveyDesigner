@@ -53,7 +53,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/class-r6-for-the-referencial.html">Class R6 for the referencial</a>
+      <a href="articles/class-r6-for-the-referential.html">Class R6 for the referential</a>
     </li>
   </ul>
 </li>
@@ -78,63 +78,30 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>{surveyDesigner}</code> is a shinyApp to parse a master XlsForm to generate a contextualized questionnaire.</p>
-<p>The app is build using <a href="https://thinkr-open.github.io/golem" class="external-link"><code>{golem}</code> framework</a> and following the tutorial: <a href="https://engineering-shiny.org//" class="external-link">Engineering Production-Grade Shiny Apps</a>.</p>
-<p>Read more on the rationale for this app in the <a href="https://unhcr-americas.github.io/surveyDesigner/docs/articles/surveyDesigner.html" class="external-link">vignette</a></p>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install the development version from <a href="https://github.com/Thinkr-open/golem" class="external-link">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"unhcr-americas/surveyDesigner"</span><span class="op">)</span></span></code></pre></div>
-</div>
+<p><code>{surveyDesigner}</code> is a shinyApp to parse a master referential of questions and indicators to generate a contextualized series of <a href="http://xlsform.org" class="external-link">xlsform</a> questionnaires.</p>
+<p>For the end-user, aka the Survey Coordinator at Operation level, the application is expected to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Enforce a questionnaire design process that <strong>starts from a selection of indicators</strong> that needs to be measured and pre-select automatically all the required standardized survey modules and questions in order to measure them. Not only this ensure that standards are actually used, but it will also minimize the risk of questionnaire design mistakes: “<em>collect what you need, use what you collect</em>”</p></li>
+<li><p>Ease the <strong>contextualization process</strong> from the global referential to the actual implementation in each country (i.e translating and adjusting the labels as per the specific context) and facilitate the feedback loop so that if the same ad-hoc questions are used in multiple context, they can be considered for inclusion in the global referential</p></li>
+<li><p>Support the usage of <a href="https://www.youtube.com/watch?v=qRmy2OAnyWc" class="external-link">mixed-mode (CAPI/CATI?CAWI)</a> and multiple data collection waves to collect the final dataset within an <strong>annual survey data collection cycle</strong>, all of this allowing both to promote survey integration and to maximize the financial resources invested in those activities</p></li>
+</ol>
+<p>Overall, this will contribute over time to the creation of <a href="https://egrisstats.org/resource/data-disaggregation-of-sdg-indicators-by-forced-displacement/" class="external-link">standardized survey-based indicators</a> for comparative data analysis across countries and contexts.</p>
+<p>Read more on the rationale for this app in the <a href="https://unhcr-americas.github.io/surveyDesigner/docs/articles/surveyDesigner.html" class="external-link">vignette</a> or go through the <a href="https://github.com/unhcr-americas/surveyDesigner/wiki" class="external-link">wiki</a> to go through the technical specifications</p>
 <div class="section level2">
 <h2 id="run-the-app">Run the app<a class="anchor" aria-label="anchor" href="#run-the-app"></a>
 </h2>
-<p>This script allows you to display the app</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Run the application</span></span>
-<span><span class="fu">surveyDesigner</span><span class="fu">::</span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="update-the-app">Update the app<a class="anchor" aria-label="anchor" href="#update-the-app"></a>
-</h2>
-<p>This script allows you to quickly rebuild and display the app</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Detach all loaded packages and clean your environment</span></span>
-<span><span class="fu">golem</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/golem/man/detach_all_attached.html" class="external-link">detach_all_attached</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># rm(list=ls(all.names = TRUE))</span></span>
-<span></span>
-<span><span class="co"># Document and reload your package</span></span>
-<span><span class="fu">golem</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/golem/man/document_and_reload.html" class="external-link">document_and_reload</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
+<p>The app is still under development - the prototype is accessible here: <a href="https://rstudio.unhcr.org/Survey_Designer/" class="external-link uri">https://rstudio.unhcr.org/Survey_Designer/</a></p>
+<p>To run it locally, use</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"unhcr-americas/surveyDesigner"</span><span class="op">)</span></span>
 <span><span class="co"># Run the application</span></span>
 <span><span class="fu">surveyDesigner</span><span class="fu">::</span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="update-the-package-documentation">Update the package documentation<a class="anchor" aria-label="anchor" href="#update-the-package-documentation"></a>
+<h2 id="for-developpers">For developpers<a class="anchor" aria-label="anchor" href="#for-developpers"></a>
 </h2>
-<p>This script allows to update the package documentation</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">document</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html" class="external-link">check</a></span><span class="op">(</span>document <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="as-dev-">As dev :<a class="anchor" aria-label="anchor" href="#as-dev-"></a>
-</h2>
-<p>Please use template commit and MR :</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">project_path</span> <span class="op">&lt;-</span> <span class="st">"path_to_surveyDesigner"</span></span>
-<span><span class="fu">gert</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/gert/reference/git_config.html" class="external-link">git_config_set</a></span><span class="op">(</span>repo <span class="op">=</span> <span class="va">project_path</span>, name <span class="op">=</span> <span class="st">"commit.template"</span>, value <span class="op">=</span> <span class="st">".github/template_commit"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
-</h2>
+<p>The app is build using <a href="https://thinkr-open.github.io/golem" class="external-link"><code>{golem}</code> framework</a> and following the tutorial: <a href="https://engineering-shiny.org//" class="external-link">Engineering Production-Grade Shiny Apps</a>.</p>
 <p>Please note that the surveyDesigner project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
