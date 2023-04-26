@@ -17,6 +17,7 @@ For the end-user, aka the Survey Coordinator at Operation level, the application
   
   3. Support the usage of [mixed-mode (CAPI/CATI?CAWI)](https://www.youtube.com/watch?v=qRmy2OAnyWc) and multiple data collection waves to collect the final dataset within an __annual survey data collection cycle__, all of this allowing both to promote survey integration and to maximize the financial resources invested in those activities  
 
+Overall, this will contribute over time to the creation of [standardized survey-based indicators](https://egrisstats.org/resource/data-disaggregation-of-sdg-indicators-by-forced-displacement/) for comparative data analysis across countries and contexts.
 
 Read more on the rationale for this app in the [vignette](https://unhcr-americas.github.io/surveyDesigner/docs/articles/surveyDesigner.html) or go through the [wiki](https://github.com/unhcr-americas/surveyDesigner/wiki) to go through the technical specifications
 
