@@ -21,7 +21,11 @@ library(purrr)
 # r6_Questionnaire
 
 
-A questionnaire is created a list of one or multiple [XlsForm](http://xlsform.org)
+A questionnaire object creates a list of one or multiple [XlsForm](http://xlsform.org) together with a summary of the .
+
+The 
+
+To get to a questionnaire, 
 
 ```{r function-r6_questionnaire}
 #' questionnaire class is a class to load, check and manipulate one or more than one XLSForm 

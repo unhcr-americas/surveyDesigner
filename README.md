@@ -11,7 +11,7 @@
 
 For the end-user, aka the Survey Coordinator at Operation level, the application is expected to: 
 
-  1. Enforce a questionnaire design process that __starts from a selection of indicators__ that needs to be measured and pre-select automatically all the required standardized survey modules and questions in order to measure them. Not only this ensure that standards are actually used, but it will also minimize the risk of questionnaire design mistakes: "_collect what you need, use what you collect_"  
+  1. Enforce a questionnaire design process that __starts from a selection of indicators__ that needs to be measured and pre-select automatically all the required standardized survey modules and questions in order to measure them. Not only this shall ensure that standards are actually used, but it will also minimize the risk of questionnaire design mistakes: "_collect what you need, use what you collect_"  
   
   2. Ease the __contextualization process__ from the global referential to the actual implementation in each country (i.e translating and adjusting the labels as per the specific context) and facilitate the feedback loop so that if the same ad-hoc questions are used in multiple context, they can be considered for inclusion in the global referential 
   
