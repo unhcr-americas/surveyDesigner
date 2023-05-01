@@ -2,6 +2,7 @@
 
 export("%>%")
 export(Referential)
+export(questionnaire)
 export(run_app)
 import(shiny)
 import(shinydashboard)

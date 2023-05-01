@@ -22,6 +22,18 @@ library(surveyDesigner)
 
 # r6_referential
 
+A referential is initially created through the import from an excel file. 
+
+For each Operational purpose (Household Survey, Flow Monitoring, Key Informants...), there's a distinct referential.
+
+This file at first defines the mapping between:  
+
+  * Indicators;
+  * Target population;
+  * Disaggregation variables;
+  * Survey Variables;
+  * Survey modalities, aka the choices.
+
 The filtering of the referential should take in account the order/sequence of questions and modules. 
 
 A specific method is implemented to separate our file with begin and end group
@@ -40,25 +52,19 @@ ref$by_groups$group_intro
 
 # Utils for referential manipulation
 
+Utilities functions are created to ensure the full integrity of the referential
+
+
 ## Utilities in relation with xlsform
 
- 
  * `names_of_sheet` The referential file in excel should includes all required worksheet. When loading the referential - it should comply with xlsform and  further referential-specific expected parameters - see - also https://github.com/XLSForm/pyxform
  
  * `contains_groups` the survey worksheet should include groups to bring together questions
  
-
  * `get_groups` utilities to pull groups from the survey worksheet
  
  * `get_choices_for_question` utilities to pull all choices from select_one and select_all functions
  
-
-
- 
- 
-
-  
-  
 
 ## Utilities in relation with indicators mapping
 

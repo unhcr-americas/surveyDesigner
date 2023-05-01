@@ -44,6 +44,7 @@ questionnaire <- R6::R6Class(classname = "questionnaire",
                              #' @param path path to the xlsForm
                              #' 
                              #' @importFrom readxl excel_sheets read_xlsx
+                             #' @importFrom stats setNames
                              #' 
                              #' @return named list
                              initialize = function(path){
@@ -60,17 +61,6 @@ questionnaire <- R6::R6Class(classname = "questionnaire",
                                    read_xlsx(path = path, sheet = x)}) |>
                                       setNames(nm = sheets)
                                # TODO checking survey and other sheets
-                               
-                               # survey have to be a xlsform
-                               if(!is_a_xlsfrom(data$survey)){
-                                 stop("the sheet 'survey' dosen't seem to be a xlsform")
-                               }
-                               
-                               self$data <- data
-                               
-                               # Get groups 
-                               
-                               self$get_groups()
                              }
                            ),
                            private = list(
@@ -121,7 +111,7 @@ test_that("r6_questionnaire works", {
 ```
 
 
-# Utils for xlsx
+# Utils for questionnaire
     
 ```{r development-utils, eval = FALSE}
 
@@ -131,42 +121,14 @@ test_that("r6_questionnaire works", {
 ```
 
 
-```{r function-utils_xlsform}
-
-assign(
-  "names_sheets", 
-  c("survey",
-    "choices",
-    "Indicator",
-    "Indicator_survey",
-    "indicator_choices", 
-    "indicator_population",
-    "indicator_dissagregation", 
-    "country_language"
-  ), 
-  envir = survey_designer)
+```{r function-utils_questionnaire}
 
 
-
-
-#' function to check name of sheets
-#'
-#' @param path path to the xlsform
-#'
-#' @noRd
-names_of_sheet <- function(path){
-  sheets <- excel_sheets(path)
-  if(all(sheets == get("names_sheets", envir = survey_designer))){
-    return(sheets)
-  }else{
-    stop("Problem with the name of sheets")
-  }
-}
 ```
   
   
-```{r tests-utils_xlsform}
-test_that("utils_xlsform works", {
+```{r tests-utils_questionnaire}
+test_that("utils_questionnaire works", {
   
 
 })
