@@ -40,8 +40,39 @@ ref$by_groups$group_intro
 
 # Utils for referential manipulation
 
-    
+## Utilities in relation with xlsform
 
+ 
+ * `names_of_sheet` The referential file in excel should includes all required worksheet. When loading the referential - it should comply with xlsform and  further referential-specific expected parameters - see - also https://github.com/XLSForm/pyxform
+ 
+ * `contains_groups` the survey worksheet should include groups to bring together questions
+ 
+
+ * `get_groups` utilities to pull groups from the survey worksheet
+ 
+ * `get_choices_for_question` utilities to pull all choices from select_one and select_all functions
+ 
+
+
+ 
+ 
+
+  
+  
+
+## Utilities in relation with indicators mapping
+
+ 
+ * `has_variables_for_indicators` If an indicator is defined it should map with at least one variable from the survey worksheet
+ 
+ * `indicator_linked_population` An indicator should map with at least one population
+ 
+ * `population_linked_indicator` If a relation between one population and one indicator is recorded, the indicator should also be defined in the indicator frame
+ 
+ * `indicator_linked_variable` If an indicator is defined to map with variables from the survey worksheet, then all those variables should actually be present in the survey frame
+    
+    
+    
 
  
  

@@ -1,5 +1,5 @@
 ---
-title: "flat_mod_home.Rmd empty"
+title: "Golem Modules for Survey Designer"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -65,6 +65,6 @@ test_that("mod_home works", {
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
-fusen::inflate(flat_file = "dev/flat_mod_home.Rmd", vignette_name = "Mon module home")
+fusen::inflate(flat_file = "dev/flat_modules_golem", vignette_name = "Golem Modules for Survey Designer")
 ```
 
