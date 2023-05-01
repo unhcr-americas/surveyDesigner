@@ -15,7 +15,7 @@ app_ui <- function(request) {
     
     
     # enable alert messages
-    shinyWidgets::useSweetAlert(),
+    #shinyWidgets::useSweetAlert(),
     
     # Leave this function for adding external resources
     golem_add_external_resources(),
@@ -235,7 +235,7 @@ app_ui <- function(request) {
                   fluidRow( 
                     # Valid statuses are: primary, success, info, warning, danger.
                     column(
-                      4,
+                      3,
                       box(title = " 1. Topics",
                           width = NULL,
                           collapsible = FALSE,
@@ -308,16 +308,16 @@ app_ui <- function(request) {
                           tags$br()  ) 
                     ),
                     column(
-                      4,
+                      3,
                       box(title = " 2. Indicators", 
                           width = NULL, 
                           status = "warning",
-                          " Now select form the list ",
+                          " Now select the indicators from the filtered list ",
                           " ",
                           tags$br()  ) 
                     ),
                     column(
-                      4,
+                      3,
                       box(title = " 3. Disaggregation", 
                           width = NULL, 
                           collapsible = FALSE, 
@@ -332,7 +332,19 @@ app_ui <- function(request) {
                                                                      "Site"="Site" ),
                                                       selected = "Age")  ),
                                                       tags$br()  )
-                      )
+                      ),
+                    column(
+                      3,
+                      box(title = " 4. Context-specific Questions", 
+                          width = NULL, 
+                          status = "warning",
+                          " You can add context specific questions- 
+                          i.e. Questions that have not been defined in the global referential. 
+                          Thoses questions will be shared back with the global referential manager
+                          for potential inclusion in the next release of the referential",
+                          " ",
+                          tags$br()  ) 
+                    )
                   ) ,                 
                   fluidRow( 
                     # Valid statuses are: primary, success, info, warning, danger.
