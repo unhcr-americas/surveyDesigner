@@ -32,7 +32,10 @@ app_ui <- function(request) {
           menuItem("  Step 1. Define Context", tabName = "Context", icon = icon("location-dot")),
           menuItem("  Step 2. Configure Content", tabName = "Content", icon = icon("arrows-to-circle")),
           menuItem("  Step 3. Set up Collection", tabName = "Collection", icon = icon("list-check")),
-          menuItem("  Step 4. Publish Surveys", tabName = "Forms", icon = icon("share-from-square"))
+          menuItem("  Step 4. Publish Surveys", tabName = "Forms", icon = icon("share-from-square")),
+          menuItem(" -- Save or Load Session", icon = icon("floppy-disk"),
+                                   menuSubItem("Save session Unique ID", tabName = "subitem1", icon = icon("angles-right")),
+                                   menuSubItem("Load session using unique ID", tabName = "subitem2", icon = icon("angles-left")))
         )
       ),
       
@@ -51,34 +54,34 @@ app_ui <- function(request) {
                   
                   
                   tags$div(class = "jumbotron text-left", 
-                           style = "margin-bottom:15px;margin-top:15px;margin-left:15px",
+                           style = "margin-bottom:5px;margin-top:5px;margin-left:5px",
                            tags$h1(style = 'color:#0072BC;',
                                    style = 'margin-bottom:0px;margin-top:0px',
-                                   'As the Survey Coordinator in an Operation, integrating, configuring and tailoring multiple surveys at once 
+                                   'As Local Survey Coordinator, integrating, configuring and tailoring multiple surveys at once 
                   is often challenging!'),
-                           tags$p(class = 'jumbotron-heading', 
+                           tags$i(class = 'jumbotron-heading', 
                                    style = 'margin-left:25px',
                                    'How can you confirm that you will not miss a specific data point to calculate your final indicators and disaggregation?... 
-                  How can you make sure to enforce all existing standards and good practises while also contextualising the labels?... 
+                  How can you make sure to enforce all existing statistical standards and good practices while also contextualising correctly questions labels?... 
                   How can you maximise your resources to collect your data in a smart way, through multiple waves and modes?...  ' )
                   ), ## end jumbotron..
-                  tags$br(), 
-                  "This app is brought to you to address those complex challenges and aims to help to:" ,
+                  "This app is brought to you to address those complex challenges and aims to help:" ,
                   tags$ol(
-                    tags$li(" Enforce a questionnaire design process that starts from a",tags$b(" selection of indicators ") ,"that needs
+                    tags$li(" Enforcing a questionnaire design process that starts from a",tags$b(" selection of indicators ") ,"that needs
                             to be measured and pre-select automatically all the required standardized survey modules and
-                            questions in order to measure them. Not only this shall ensure that standards are actually used, 
-                            but it will also minimize the risk of questionnaire design mistakes" ), 
-                    tags$li(" Ease the",tags$b(" contextualization process ") ,"from the global referential to the actual implementation 
+                            questions in order to measure them, aka 'collect only what you need and use everything that you collected'.
+                            Not only this shall ensure that standards are actually used, 
+                            but it will also minimize questionnaire design mistakes" ), 
+                    tags$li(" Easing the",tags$b(" contextualization process ") ,"from the global referential to the actual implementation 
                             in each country (i.e translating and adjusting the labels as per the specific context) and
                             facilitate the feedback loop so that if the same ad-hoc questions are used in multiple context,
                             they can be considered for inclusion in the global referential "), 
-                    tags$li(" Support the usage of  mixed-mode (CAPI/CATI/CAWI) and multiple data collection waves
+                    tags$li(" Supporting the usage of  mixed-mode (CAPI/CATI/CAWI) and multiple data collection waves
                             to collect the final dataset within an",tags$b(" annual survey data collection cycle") ,", all of
                             this allowing both to promote survey integration and to maximize the financial 
                             resources invested in those activities" )
                      ) 
-                  #tags$br(), 
+                  #br(), 
                   ) 
             ),
             fluidRow( 
@@ -90,9 +93,9 @@ app_ui <- function(request) {
                     collapsible = FALSE,
                     status = "warning",
                     "First, document the operational purpose of the data that you will need to collect for the incoming cycle.",
-                    tags$br(), 
+                    br(), 
                     "This will be the first be the first filter of the design process",
-                    tags$br(),
+                    br(),
                     actionButton(inputId="start",
                                  label="Start now!",
                                  icon("location-dot") )
@@ -105,7 +108,7 @@ app_ui <- function(request) {
                     status = "warning",
                     "Second, based on the consultation with partners and sectoral experts, select the topics and indicators 
                       that needs to be covered for your annual survey cycle",
-                    tags$br()  ) 
+                    br()  ) 
               ),
               column(
                   3,
@@ -114,8 +117,8 @@ app_ui <- function(request) {
                     collapsible = FALSE, 
                     status = "warning",
                     "Third, provides information about your data collection capacity, what kind
-                      of mode can you use, how many waves can you afford, what sampling approach can you use...",
-                    tags$br()  ) 
+                      of mode can you use, how many waves can you afford, what enumeration capacity can you afford...",
+                    br()  ) 
               ),
               column(
                 3,
@@ -135,8 +138,32 @@ app_ui <- function(request) {
                   fluidRow( 
                     # Valid statuses are: primary, success, info, warning, danger.
                     column(
-                      4,
-                      box(title = " 1. Methodology / Operational Purpose",
+                      3,
+                      box(title = " 1. Metadata", 
+                          width = NULL, 
+                          collapsible = FALSE, 
+                          status = "warning",
+                          " ",
+                          textInput("caption",
+                                    label="Title for your data collection project",
+                                    value="short title"),
+                          tags$div(title="  ",
+                                   selectInput("context", 
+                                               label = "Year for your data collection", 
+                                               choices = list("2025" = "2025",
+                                                              "2025" = "2024",
+                                                              "2023" = "2023" ), 
+                                               selected = "2023")  ),
+                          textAreaInput("caption",
+                                        label="Provide an abstract for the data collection activities",
+                                        value="Who will collect - main constraints", 
+                                        width = "100%") 
+                      )
+                    ) ,
+                    
+                    column(
+                      3,
+                      box(title = " 2. Methodology / Operational Purpose",
                           width = NULL,
                           collapsible = FALSE,
                           status = "warning",
@@ -144,17 +171,16 @@ app_ui <- function(request) {
                           tags$div(title="Interview",
                                    radioButtons("library",
                                               label =  " What global referential to use?" , 
-                                               choices = list("Household Survey (Representative Stock)" = "household_survey", 
-                                                              "Flow Monitoring (People not aiming to establish residence)" = "flow_monitoring",
-                                                              "Key Informant (Persons with knowledge)" = "key_informant",
-                                                              "Beneficiary Monitoring (Participant to an assistance program)" = "beneficiary_monitoring"), 
+                                               choices = list("Household Survey (Representative Stable Population Stock in protracted situation)" = "household_survey", 
+                                                              "Flow Monitoring (People not Aiming to establish their habitual residence in the place of interview)" = "flow_monitoring",
+                                                              "Key Informant (Persons with Local Qualitative Knowledge in an Emergency Situation)" = "key_informant"), 
                                                selected = "household_survey" )  ),
-                          tags$br(),
-                          " Referentials are globally managed. They are based on international standards when possible") 
+                          br(),
+                          " Referentials are centrally managed by UNHCR Global Data Service. They are based on most appropriate international statistical standards (EGRISS, UN Stat Commissions, etc.)") 
                     ),
                     column(
-                      4,
-                      box(title = " 2. Country", 
+                      3,
+                      box(title = " 3. Country", 
                           width = NULL, 
                           status = "warning",
                           " ",
@@ -165,7 +191,7 @@ app_ui <- function(request) {
                                                               "Colombia" = "Colombia",
                                                               "Ecuador" = "Ecuador" ), 
                                                selected = "Panama")  ),
-                          tags$br(),
+                          br(),
                           
                           tags$div(title="Geographic Coverage ",
                                    selectInput("context", 
@@ -174,41 +200,35 @@ app_ui <- function(request) {
                                                               "no" = "No" ), 
                                                selected = "yes")  ),
                           
-                          "- this will pull up automatically the caseload that should be 
-                          covered based on your annual statistical report and implement 
-                          the languages translation and geographic breakdown required for the country",
-                          br(),
-                          br(),
-                          br(),
                           hr(),
-                          " Global referentials are contextualised for each country through the regional survey support capacity in the bureau",
-                          br(),
-                          "if your country does not appear in the that list, ignite a contextualisation request",
+                          "This will pull up the languages translation and geographic breakdown required for the country.",
+                          " Global referentials are contextualised for each country through the regional survey support capacity in the bureau.",
+                          "If your country does not appear in the that list, ignite a contextualisation request",
                           br(),
                           actionButton(inputId="contextualisationRequest",
                                        label="Request Contextualisation",
                                        icon("gears"))  ,
-                          tags$br(),
-                          tags$br()  ) 
+                          br()) 
                     ),
                     column(
-                      4,
-                      box(title = " 3. Population Groups to Cover", 
+                      3,
+                      box(title = " 4. Targeted Groups", 
                           width = NULL, 
                           collapsible = FALSE, 
                           status = "warning",
                           " ",
                           tags$div(title="Population Group to cover",
                                    checkboxGroupInput("population", 
-                                                      label = "Target Population", 
+                                                      label = "Target Group", 
                                                       choices = list("Refugees (REF) & Asylum seekers (ASY)"="RAS", 
                                                                      "Internally displaced persons (IDP)"="IDP",
                                                                      "Other people in need of international protection (OIP)"="OIP",
                                                                      "Stateless Persons (STA)"="STA", 
                                                                      "Others of concern to UNHCR (OOC)"="OOC",
                                                                      "Returnee (RET)"="RET",
-                                                                     "Host community (HCT)"="HCT"  ), 
-                          tags$br()  ))
+                                                                     "Host community (HCT)"="HCT"  ),  
+                                                      
+                          br()  ))
                        )
                     )
                   ) ,                 
@@ -223,7 +243,7 @@ app_ui <- function(request) {
                           " ",
                           hr(),
                           actionButton(inputId="start",
-                                   label="Configure Content",
+                                   label="Go to Configure Content",
                                    icon("arrows-to-circle"))
                     ) 
                     )
@@ -236,12 +256,14 @@ app_ui <- function(request) {
                     # Valid statuses are: primary, success, info, warning, danger.
                     column(
                       3,
-                      box(title = " 1. Topics",
+                      box(title = " 1. Apply filters on Topics",
                           width = NULL,
                           collapsible = FALSE,
                           status = "warning",
+                          " Topics below corresponds to standard metadata. 
+                          One indicator might be linked to mulitple topics",
                           checkboxGroupInput("topic", 
-                                             label = "Select the Topics  to prioritise", 
+                                             label = " Tick to filter", 
                                              choiceNames = list(
                                                list(
                                                  icon("gavel") ,
@@ -303,36 +325,63 @@ app_ui <- function(request) {
                                                                   "Health-Nutrition"  , 
                                                                   "Accountability",
                                                                   "Information"  )),
-                          tags$br(),
+                          br(),
                           p(" This will filters the corresponding indicators") ,
-                          tags$br()  ) 
+                          br()  ) 
                     ),
                     column(
                       3,
-                      box(title = " 2. Indicators", 
+                      box(title = " 2. Apply filters on Indicators Family", 
                           width = NULL, 
                           status = "warning",
-                          " Now select the indicators from the filtered list ",
-                          " ",
-                          tags$br()  ) 
-                    ),
-                    column(
-                      3,
-                      box(title = " 3. Disaggregation", 
-                          width = NULL, 
-                          collapsible = FALSE, 
-                          status = "warning",
-                          " Required disaggregation for crosstabulations",
-                          tags$div(title="Required Disaggregation for Crosstabulation",
+                          " One indicator might be linked to mulitple families. 
+                          The items below will bring a second filters levels on the indicator menu",
+                          tags$div(title="Standard Indicators",
                                    checkboxGroupInput("Disaggregation",
-                                                      label = "Disaggregation",
-                                                      choices = list("Age"="Gender",
-                                                                     "Gender"="Gender",
-                                                                     "Disability"="Disability",
-                                                                     "Site"="Site" ),
-                                                      selected = "Age")  ),
-                                                      tags$br()  )
-                      ),
+                                                      label = " Tick to filter ",
+                                                      choices = list("UNHCR Programme / RBM"="RBM",
+                                                                     "UN Stat Commission / EGRISS"="EGRISS",
+                                                                     "Sustainable Development Goal / SDG"="SDG",
+                                                                     "Global Compact on Refugee / GCR"="GCR",
+                                                                     "Humanitarian Sphere Standards"="Sphere",
+                                                                     "Post Distribution & Assistance Monitoring"="PDM",
+                                                                     "Assistance Targeting / Excellence Hub"="targeting",
+                                                                     "IASC Framework on Durable Solutions for IDPs."="Durable",
+                                                                     "Composite Indicator / Index"="Index"
+                                                      )    ) )  
+                      )
+                    ),
+                    column(
+                      3,
+                      box(title = " 3. Select Indicators", 
+                          width = NULL, 
+                          status = "warning",
+                          "Note that one indicator might requires multiples questions 
+                          within the final survey to be calculated. 
+                          Do not worry the app will take care of that complex step",
+                          tags$div(title="Standard Indicators",
+                                   checkboxGroupInput("Disaggregation",
+                                                      label = "Select indicators - to be turned to autocomplete-multiple selection..",
+                                                      choices = list("Access to drinking water"="outcome12_1",
+                                                                     "Residing in physically safe and secure settlements with access to basic facilities"="impact2_2",
+                                                                     "Could access health facilities"="impact2_3",
+                                                                     "Feeling safe walking alone"="impact3_3",
+                                                                     "Children under 5 birth registered with civil authorities"="outcome1_2",
+                                                                     "Has legally recognized documents"="outcome1_3",
+                                                                     "Proportion of PoC who know where to access available GBV services"="outcome4_1",
+                                                                     "Do not accept violence against women"="outcome4_2",
+                                                                     "With primary reliance on clean (cooking) fuels and technology"="outcome8_2",
+                                                                     "Living in Habitable and affordable shelter"="outcome9_1",
+                                                                     "Access to energy to ensure lighting"="outcome9_2",
+                                                                     "With access to a safe household toilet"="outcome12_2",
+                                                                     "With a bank account or mobile-money service provider"="outcome13_1",
+                                                                     "Working age individuals who are unemployed"="outcome13_3",
+                                                                     "With secure tenure and/or property rights"="outcome16_1",
+                                                                     "Covered by social protection floors/systems"="outcome16_2",
+                                                                     "and so on..."="oo"
+                                                      )    ) )  
+                      )
+                    ),
                     column(
                       3,
                       box(title = " 4. Context-specific Questions", 
@@ -341,9 +390,12 @@ app_ui <- function(request) {
                           " You can add context specific questions- 
                           i.e. Questions that have not been defined in the global referential. 
                           Thoses questions will be shared back with the global referential manager
-                          for potential inclusion in the next release of the referential",
-                          " ",
-                          tags$br()  ) 
+                          for potential inclusion in the next release of the referential", 
+                          br()  ,
+                          hr(),
+                          actionButton(inputId="start",
+                                       label="Select  / Define Ad-hoc Questions",
+                                       icon("gears"))) 
                     )
                   ) ,                 
                   fluidRow( 
@@ -353,11 +405,12 @@ app_ui <- function(request) {
                       box(title = " Indicator Plan -- Analysis",
                           width = NULL,
                           collapsible = FALSE,
-                          status = "success",
-                          " ",
+                          status = "success", 
+                          " A small summary review will be automatically generated below", 
+                          br(),
                           hr(),
                           actionButton(inputId="start",
-                                   label="Set up Collection",
+                                   label="Next Set up Collection",
                                    icon("list-check"))
                      ) 
                     )
@@ -394,11 +447,11 @@ app_ui <- function(request) {
                                               choiceValues =  list("CAPI"  , 
                                                                    "CATI"  ,
                                                                    "CAWI" )),
-                  tags$br() ) 
+                  br() ) 
             ),
             column(
               4,
-              box(title = " 2.Waves", 
+              box(title = " 2. Waves", 
                   width = NULL, 
                   status = "warning",
                   " Define how many data collection waves you can manage within the year.
@@ -410,26 +463,45 @@ app_ui <- function(request) {
                                              "Two Waves" = "Two-waves",
                                              "Three Waves" = "Three-waves",
                                              "Four Waves" = "Four-waves" ), 
-                              selected = "Two-waves"),
+                              selected = "One-waves"),
                   "As a result of this stage, below is an estimation of Interview lenght per questionnaire",
-                  tags$br()  ) 
+                  br()  ) 
             ),
             column(
               4,
-              box(title = " 3. Sampling approach", 
+              box(title = " 3. Enumeration Capacity", 
                   width = NULL, 
                   collapsible = FALSE, 
-                  status = "warning",
-                  " ",
-                  tags$div(title="Required Disaggregation for Crosstabulation",
-                           checkboxGroupInput("Disaggregation",
-                                              label = "Disaggregation",
-                                              choices = list("Age"="Gender",
-                                                             "Gender"="Gender",
-                                                             "Disability"="Disability",
-                                                             "Site"="Site" ),
-                                              selected = "Age")  ),
-                  tags$br()  )
+                  status = "warning", 
+                  tags$div(title="Budget",
+                           numericInput("budget in $",
+                                        label = "Available Budget for Data Collection (in US$)",
+                                        30000, 
+                                        min = 5000, 
+                                        max = 500000) ),
+                  "The Maximum monthly data collection  depends on the capacity of the 
+                  organisation that partners or on the company that got contracted for that activity",
+                 
+                  hr(),
+                  tags$div(title="Face1",
+                           numericInput("face",
+                                        label = "Total Cost per Interview (in US$) for Face to face",
+                                        50, min = 20, max = 300) ),
+                  tags$div(title="Face2",
+                           numericInput("face",
+                                        label = "Max Capacity of monthly working day for Face to face enumerators",
+                                        50, min = 1, max = 100) ),
+                  hr(),
+                  tags$div(title="Face1",
+                           numericInput("face",
+                                        label = "Total Cost per Interview (in US$) for Telephone",
+                                        20, min = 5, max = 100) ),
+                  
+                  tags$div(title="Call Center enumerators",
+                           numericInput("face",
+                                        label = "Max Capacity of monthly working day for Call Center enumerators",
+                                        20, min = 1, max = 100) ),
+                  br()  )
             )
           ) ,                 
           fluidRow( 
@@ -440,10 +512,12 @@ app_ui <- function(request) {
                   width = NULL,
                   collapsible = FALSE,
                   status = "success",
-                  "Feedback on your data collection analysis plan based on estimated interview duration",
+                  "Feedback on your data collection analysis plan based on 
+                  estimated interview duration, budget and enumeration capacity 
+                  will be automatically generated below",
               hr(),
               actionButton(inputId="start",
-                           label="Publish Survey",
+                           label="Now Publish Survey",
                            icon("share-from-square")
                            )
               ))
@@ -459,16 +533,21 @@ app_ui <- function(request) {
                           width = NULL,
                           collapsible = FALSE,
                           status = "warning",
-                          " Add the script to introduce the survey",
-                         tags$br(),  ) 
+                          " ",
+                          textAreaInput("caption",
+                                        label="Add the script to be used by the enumerator to introduce the survey",
+                                        value=" Hello, my name is .. and we would like to interview you for... ", 
+                                        width = "100%"),
+                          br()    ) 
                     ),
                     column(
                       3,
                       box(title = " 2. Survey Modules Sequence", 
                           width = NULL, 
                           status = "warning",
-                          " Adjust sequences ",
-                          tags$br()  ) 
+                          " Adjust the default sequence between modules and
+                          then between questions within modules",
+                          br()  ) 
                     ),
                     column(
                       3,
@@ -498,29 +577,29 @@ app_ui <- function(request) {
                   fluidRow( 
                     column(
                       6,
-                    box(title = " Document", 
+                    box(title = " Documentation", 
                         width = NULL, 
                         collapsible = FALSE, 
                         status = "success",
                         "Download the documentation for your annual survey data collection cycle",
                         actionButton(inputId="start",
-                                     label="Annual survey data collection cycle",
+                                     label="Annual Survey Cycle",
                                      icon("boxes-packing"))
                       ) 
                     ),
                     column(
                       6,
-                      box(title = " and Publish", 
+                      box(title = " Publication", 
                           width = NULL, 
                           collapsible = FALSE, 
                           status = "success",
-                          "Publish all Surveys directly on kobotoolbox: ",
+                          "Publish all Surveys directly on the data collection server: ",
                           br(),
                           actionButton(inputId="start",
                                        label="Publish on Kobo",
                                        icon("paper-plane")),
                           br(),
-                          " or download the corresponding xlsform files to upload on kobotoolbox: ",
+                          " or download the corresponding xlsform files to upload them yourself on kobotoolbox: ",
                           br(),
                           actionButton(inputId="start",
                                        label="XlsForm",
