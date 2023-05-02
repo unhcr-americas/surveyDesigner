@@ -62,21 +62,21 @@ app_ui <- function(request) {
                            tags$i(class = 'jumbotron-heading', 
                                    style = 'margin-left:25px',
                                    'How can you confirm that you will not miss a specific data point to calculate your final indicators and disaggregation?... 
-                  How can you make sure to enforce all existing statistical standards and good practices while also contextualising correctly questions labels?... 
-                  How can you maximise your resources to collect your data in a smart way, through multiple waves and modes?...  ' )
+                  How can you make sure to enforce all existing statistical standards and good practices while also contextualizing correctly questions labels?... 
+                  How can you maximise your resources to collect your data smarty, through multiple waves and modes?...  ' )
                   ), ## end jumbotron..
-                  "This app is brought to you to address those complex challenges and aims to help:" ,
+                  "This app aims at addressing the complex challenges associated with the design of integrated surveys. It is expected to help:" ,
                   tags$ol(
-                    tags$li(" Enforcing a questionnaire design process that starts from a",tags$b(" selection of indicators ") ,"that needs
-                            to be measured and pre-select automatically all the required standardized survey modules and
+                    tags$li(" Standardizing a questionnaire design process that starts with a",tags$b(" selection of indicators ") ,"that needs
+                            to be measured and thenpre-select automatically all the required standardized survey modules and
                             questions in order to measure them, aka 'collect only what you need and use everything that you collected'.
-                            Not only this shall ensure that standards are actually used, 
-                            but it will also minimize questionnaire design mistakes" ), 
+                            This will ensure that standards are applied, 
+                            but it will also minimize the risk of questionnaire design mistakes" ), 
                     tags$li(" Easing the",tags$b(" contextualization process ") ,"from the global referential to the actual implementation 
                             in each country (i.e translating and adjusting the labels as per the specific context) and
-                            facilitate the feedback loop so that if the same ad-hoc questions are used in multiple context,
+                            facilitate a feedback loop so that if the same ad-hoc questions are used in multiple context,
                             they can be considered for inclusion in the global referential "), 
-                    tags$li(" Supporting the usage of  mixed-mode (CAPI/CATI/CAWI) and multiple data collection waves
+                    tags$li(" Supporting the usage of  mixed-mode (e.g.CAPI/CATI/CAWI) and multiple data collection waves
                             to collect the final dataset within an",tags$b(" annual survey data collection cycle") ,", all of
                             this allowing both to promote survey integration and to maximize the financial 
                             resources invested in those activities" )
@@ -151,12 +151,14 @@ app_ui <- function(request) {
                                    selectInput("context", 
                                                label = "Year for your data collection", 
                                                choices = list("2025" = "2025",
-                                                              "2025" = "2024",
+                                                              "2024" = "2024",
                                                               "2023" = "2023" ), 
                                                selected = "2023")  ),
                           textAreaInput("caption",
                                         label="Provide an abstract for the data collection activities",
-                                        value="Who will collect - main constraints", 
+                                        value="Who will collect? 
+                                        What is the sample frame?  
+                                        What are the main field access constraints?", 
                                         width = "100%") 
                       )
                     ) ,
@@ -171,9 +173,9 @@ app_ui <- function(request) {
                           tags$div(title="Interview",
                                    radioButtons("library",
                                               label =  " What global referential to use?" , 
-                                               choices = list("Household Survey (Representative Stable Population Stock in protracted situation)" = "household_survey", 
-                                                              "Flow Monitoring (People not Aiming to establish their habitual residence in the place of interview)" = "flow_monitoring",
-                                                              "Key Informant (Persons with Local Qualitative Knowledge in an Emergency Situation)" = "key_informant"), 
+                                               choices = list("Household Survey (Ideally representative of stable population in a protracted situation)" = "household_survey", 
+                                                              "Flow Monitoring (People not aiming to establish their habitual residence in the place of interview)" = "flow_monitoring",
+                                                              "Key Informant (Persons with local qualitative knowledge in an emergency situation)" = "key_informant"), 
                                                selected = "household_survey" )  ),
                           br(),
                           " Referentials are centrally managed by UNHCR Global Data Service. They are based on most appropriate international statistical standards (EGRISS, UN Stat Commissions, etc.)") 
@@ -360,7 +362,7 @@ app_ui <- function(request) {
                           within the final survey to be calculated. 
                           Do not worry the app will take care of that complex step",
                           tags$div(title="Standard Indicators",
-                                   checkboxGroupInput("Disaggregation",
+                                   checkboxGroupInput("indicator",
                                                       label = "Select indicators - to be turned to autocomplete-multiple selection..",
                                                       choices = list("Access to drinking water"="outcome12_1",
                                                                      "Residing in physically safe and secure settlements with access to basic facilities"="impact2_2",
@@ -387,8 +389,8 @@ app_ui <- function(request) {
                       box(title = " 4. Context-specific Questions", 
                           width = NULL, 
                           status = "warning",
-                          " You can add context specific questions- 
-                          i.e. Questions that have not been defined in the global referential. 
+                          " You may here add context specific questions, that is to say questions for which
+                          the equivalent statistical construct is not (yet) available within the global referential. 
                           Thoses questions will be shared back with the global referential manager
                           for potential inclusion in the next release of the referential", 
                           br()  ,
@@ -406,7 +408,12 @@ app_ui <- function(request) {
                           width = NULL,
                           collapsible = FALSE,
                           status = "success", 
-                          " A small summary review will be automatically generated below", 
+                          " A small summary review will be automatically generated below. 
+                          it's not for data entry but rather to output a summary 
+                          of the decision points that have been set up above.. 
+                          For instance - indicating how many unique questions 
+                          would be required in order to compile all the indicators
+                          that got selected..", 
                           br(),
                           hr(),
                           actionButton(inputId="start",
@@ -427,8 +434,10 @@ app_ui <- function(request) {
                   width = NULL,
                   collapsible = FALSE,
                   status = "warning",
-                  "Using multiple data collection mode in parallel can help minimizing 
-                             non-reponse and increase coverage.",
+                  "Using multiple data collection modes can help minimizing 
+                             non-reponse and increase coverage. ",
+                  tags$a(href="https://www.youtube.com/watch?v=qRmy2OAnyWc", "Learn more on mixed-mode here"),
+                  br(),
                   checkboxGroupInput("mode", 
                                      label =  "What Data Collection Modes do you have capacity to implement for this annual cycle?" , 
                                      choiceNames = list(
@@ -454,9 +463,13 @@ app_ui <- function(request) {
               box(title = " 2. Waves", 
                   width = NULL, 
                   status = "warning",
-                  " Define how many data collection waves you can manage within the year.
-                  The more data collection wave the more indicators can be collected. ",
-                  " ",
+                  " Define how many data collection waves you can manage within the year.",
+                  
+                  "Using multiple data collection waves can provide an opportunity for
+                  more indicators to be collected. ",
+                  tags$a(href="https://openknowledge.worldbank.org/server/api/core/bitstreams/e80ce277-f8d0-58aa-87b7-288c2895e87a/content#page=4", "Learn more on multi-waves here"),
+                  
+                  br(),
                   selectInput("wave", 
                               label = "How many data collection waves for this annual cycle?", 
                               choices = list("One Wave" = "One-wave", 
@@ -475,7 +488,7 @@ app_ui <- function(request) {
                   status = "warning", 
                   tags$div(title="Budget",
                            numericInput("budget in $",
-                                        label = "Available Budget for Data Collection (in US$)",
+                                        label = "Available Annual Budget for Data Collection (in US$)",
                                         30000, 
                                         min = 5000, 
                                         max = 500000) ),
@@ -514,7 +527,11 @@ app_ui <- function(request) {
                   status = "success",
                   "Feedback on your data collection analysis plan based on 
                   estimated interview duration, budget and enumeration capacity 
-                  will be automatically generated below",
+                  will be automatically generated below. 
+                   indication of the suggested length of the interview given the mode: 
+                   CAPI, 60-90 min; CATI; 30-45 min…and that dictates the number 
+                   of questions that are able to be included.
+                  function for that  https://edouard-legoupil.github.io/XlsFormPrettyPrint/reference/interview_duration.html",
               hr(),
               actionButton(inputId="start",
                            label="Now Publish Survey",
@@ -533,10 +550,12 @@ app_ui <- function(request) {
                           width = NULL,
                           collapsible = FALSE,
                           status = "warning",
-                          " ",
+                          " This is the text that enumerator shold use to introduce the interview. 
+                          It is important for it to be context sensitive... ",
                           textAreaInput("caption",
-                                        label="Add the script to be used by the enumerator to introduce the survey",
-                                        value=" Hello, my name is .. and we would like to interview you for... ", 
+                                        label="Add the script",
+                                        value=" Hello, my name is .. and we would like to interview you for.... 
+                                        Data will be used by.. You will be able to see aggregated results here...", 
                                         width = "100%"),
                           br()    ) 
                     ),
@@ -546,8 +565,13 @@ app_ui <- function(request) {
                           width = NULL, 
                           status = "warning",
                           " Adjust the default sequence between modules and
-                          then between questions within modules",
-                          br()  ) 
+                          then between questions within modules.",
+                          br(),
+                          "Note that the design already comes with suggested sequence of modules.
+                          For instance depending on the mode, sensitive or longer/more complicated
+                          questions comes towards the end for CAPI while they are more at the begining for CATI. 
+                          Also not all sequences can be changed as the questionnaire logic comes with hard constraints
+                          to be respected.") 
                     ),
                     column(
                       3,
