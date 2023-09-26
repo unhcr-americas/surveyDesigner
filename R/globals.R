@@ -1,8 +1,13 @@
+# remotes::install_github("thinkr-open/checkhelper")
+# checkhelper::print_globals()
+
 globalVariables(unique(c(
-  # get_choices_for_question:
-  "list_name", "name", "label",
-  # get_groups:
-  ".",
-  # get_groups : <anonymous>:
+  # mod_home_server: 
+  "parent_session",
+  # get_choices_for_question: 
+  "label", "list_name", "name", 
+  # get_groups: 
+  ".", 
+  # get_groups : <anonymous>: 
   "type"
-)))
+))) 

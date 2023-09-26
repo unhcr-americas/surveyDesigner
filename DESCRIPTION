@@ -1,29 +1,32 @@
 Package: surveyDesigner
-Title: An Amazing Shiny App
+Title: A Shiny App to help in the survey integration process
 Version: 0.0.0.9000
 Authors@R: c(
     person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "cre")),
     person("Cervan", "Girard", , "cervan@thinkr.fr", role = "aut")
   )
-Description: What the package does (one paragraph).
+Description: The package offers a series of utilities to help field practionners
+            designing their annual survey cycle.
 License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
-    dplyr,
-    dashboardthemes, 
+    dplyr, 
     shinydashboard,
     golem (>= 0.4.0),
     magrittr,
     purrr,
     R6,
     readxl,
-    shiny (>= 1.7.3)
+    shiny (>= 1.7.3),
+    unhcrshiny
 Suggests: 
     knitr,
     prettydoc,
     rmarkdown,
     spelling,
     testthat (>= 3.0.0)
+Remotes: 
+    edouard-legoupil/unhcrshiny
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
