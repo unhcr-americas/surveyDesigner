@@ -30,8 +30,8 @@ Read more on the rationale for this app in the [vignette](https://unhcr-americas
 To run it locally, use
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("unhcr-americas/surveyDesigner")
+# install.packages("pak")
+pak::pkg_install("unhcr-americas/surveyDesigner")
 # Run the application
 surveyDesigner::run_app()
 ```

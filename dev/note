@@ -1,0 +1,79 @@
+1. Start with metadata
+
+2. Beneficiry monitoring - 
+
+4. What groups to you need to cover --
+
+People who received assistance
+
+People who are registered with uNHCR
+
+
+
+This will inject the required identification modules..
+
+Indicator Family - 
+
+RBM
+EGRISS
+SDG
+GCR
+
+Remove disagreggation! 
+
+
+
+Remove budget - >> Budget is an output... 
+
+Simplex -- > Methode... Optimum sous contraintes...
+
+
+Flow moniotoring... -- is both key informant and directly key informant...
+
+Add indicators --  "Indicators Digester" --> 
+
+
+---
+
+
+-- Class context 
+
+-- - initialiase -- 
+-- 
+
+lire les deux fichiers... 
+
+- on sait comment les joindre
+
+-- filtre les indicateurs - qui permettent de filter les questions - et on rapatries les context par la jointure
+
+
+--- questionnaire s'initiliase par la jointure du context et du referentiel...
+
+L'objectif de 
+
+
+-- Referntial gere des checks... -- 
+
+-- Context gere des checks...
+
+-- questionnaire es tl 'optimisation de la collecte...--- en sortie des setting d'optimisation....
+
+-- Metdata initilialisation du questionnaire.... 
+
+
+Simplex -- Ressource = temps 
+
+Qu'optimiser -- rapport temps(argent) / nombre d'indicateurs / accuracy - f(taille echantiloon)
+
+
+
+
+referentiel <- Referential$new(system.file("SurveyDesigner_Referential.xlsx", package = "surveyDesigner") ) context <- Context$new(system.file(paste0(country, "_context.xlsx"), package = "surveyDesigner") ) questionnaire <- Questionnaire$new( indicateurs = indic, referentiel = referentiel, contexte = contexte ) # referential %>% full_join(context) %>% fitler(indicateurs) questionaires$optimize( budget = 100 temps= 2 mode= "ftf" waves= 4, person = 3 ) questionnaire$optimized <- list( data.frame en xlsForm ) questionnaire$my_optimize <- questionnaire$optimized [ wave = 1, ] 
+
+
+
+-- Optimisation -- Disponibilite person-- 
+-- Sequence indicateur -- 
+
+-- 
