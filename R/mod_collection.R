@@ -17,17 +17,22 @@ mod_collection_ui <- function(id) {
 		fluidRow(
 				 column(
 				 width = 12,
-						 h2('Step 3. Set up Collection'),
-						 p("Third, provides information about your data collection capacity,
-						   what kind of mode can you use, how many waves can you afford,
-						   what enumeration capacity can you afford... ")
+						 h2('Step 3. Optimizing Data Collection, the "Cost-Quality" Tradeoff'),
+						 p("High-quality survey data collection is getting more expensive to 
+						 conduct because of decreasing response rates and rising data collection costs. 
+						 Based data collection capacity and data collection mode opportunity, 
+						 efforts can be optimised through one or many data collection waves... "),
+				 "Using multiple data collection waves can provide an opportunity for
+                  more indicators to be collected. ",
+				 tags$a(href="https://openknowledge.worldbank.org/server/api/core/bitstreams/e80ce277-f8d0-58aa-87b7-288c2895e87a/content#page=4", "Learn more on multi-waves here"),
+				 
 					 )
 				 ),
 
 		fluidRow(
 		  # Valid statuses are: primary, success, info, warning, danger.
 		  column(
-		    4,
+		    3,
 		    box(title = " 1. Modes",
 		        width = NULL,
 		        collapsible = FALSE,
@@ -53,34 +58,55 @@ mod_collection_ui <- function(id) {
 		                             )),
 		                           choiceValues =  list("CAPI"  ,
 		                                                "CATI"  ,
-		                                                "CAWI" )),
-		        br() )
+		                                                "CAWI" )) 
+		        )
 		  ),
 		  column(
 		    4,
-		    box(title = " 2. Waves",
+		    box(title = " 2. Survey Respondant Attrition",
+		        # https://academic.oup.com/jssam/advance-article-abstract/doi/10.1093/jssam/smad028/7255957?redirectedFrom=fulltext
+		        # https://academic.oup.com/jssam/advance-article-abstract/doi/10.1093/jssam/smad007/7111262?redirectedFrom=fulltext&login=false
 		        width = NULL,
+		        collapsible = FALSE,
 		        status = "warning",
-		        " Define how many data collection waves you can manage within the year.",
-
-		        "Using multiple data collection waves can provide an opportunity for
-                  more indicators to be collected. ",
-		        tags$a(href="https://openknowledge.worldbank.org/server/api/core/bitstreams/e80ce277-f8d0-58aa-87b7-288c2895e87a/content#page=4", "Learn more on multi-waves here"),
-
-		        br(),
-		        selectInput(inputId = ns("wave"),
-		                    label = "How many data collection waves for this annual cycle?",
-		                    choices = list("One Wave" = "One-wave",
-		                                   "Two Waves" = "Two-waves",
-		                                   "Three Waves" = "Three-waves",
-		                                   "Four Waves" = "Four-waves" ),
-		                    selected = "One-waves"),
-		        "As a result of this stage, below is an estimation of Interview lenght per questionnaire",
-		        br()  )
+		        "Survey respondent attrition is the loss of participants during the 
+		        course of a survey, often due to factors like survey length or lack of motivation. 
+		        It directly influences the total cost of the survey and can be used to optimise survey design", 
+		        
+		        hr(),
+		        
+		        fluidRow(
+		          column(
+		            6,
+		            "Face to face",
+		            sliderInput( inputId =   ns("attemptcapi"),
+		                         label = "Define average number of attempt per interview",
+		                         value = 2,  min = 0 , max = 10, step = 1 ,
+		                         width = '100%'),	
+		            sliderInput( inputId =   ns("responsecorrelationcapi"),
+		                         label = "Define correlation between response rate and interview duration ",
+		                         value = 0.4,  min = 0 , max = 1, step = 0.1 ,
+		                         width = '100%')
+		          ),
+		          column(
+		            6,
+		            "Telephone",
+		            sliderInput( inputId =   ns("attemptcati"),
+		                         label = "Define average number of attempt per interview",
+		                         value = 4,  min = 0 , max = 10, step = 1 ,
+		                         width = '100%'),	
+		            sliderInput( inputId =   ns("responsecorrelationcati"),
+		                         label = "Define correlation between response rate and interview duration ",
+		                         value = 0.6,  min = 0 , max = 1, step = 0.1 ,
+		                         width = '100%')
+		          )
+		        )
+		    )
 		  ),
+		  
 		  column(
 		    4,
-		    box(title = " 3. Enumeration Capacity",
+		    box(title = " 2. Enumeration Capacity",
 		        width = NULL,
 		        collapsible = FALSE,
 		        status = "warning",
@@ -91,51 +117,84 @@ mod_collection_ui <- function(id) {
 		        #                       min = 5000,
 		        #                       max = 500000) ),
 		        "The Maximum monthly data collection  depends on the capacity of the
-                  organisation that partners or on the company that got contracted for that activity",
+              organisation that partners or on the company that got contracted for that activity",
 
 		        hr(),
+		        
+		        fluidRow(
+		          column(
+		            6,
+		            "Face to face",
 		        tags$div(title="Face1",
-		                 numericInput(inputId = ns("face1"),
+		                 sliderInput(inputId = ns("face1"),
 		                              label = "Total Cost per Interview (in US$) for Face to face",
 		                              50, min = 20, max = 300) ),
 		        tags$div(title="Face2",
-		                 numericInput(inputId = ns("face2"),
+		                 sliderInput(inputId = ns("face2"),
 		                              label = "Max Capacity of monthly working day for Face to face enumerators",
-		                              50, min = 1, max = 100) ),
-		        hr(),
+		                              50, min = 1, max = 100) ) 
+		          ),
+		        column(
+		          6,
+		          "Telephone",
 		        tags$div(title="Tel1",
-		                 numericInput(inputId = ns("Tel1"),
+		                 sliderInput(inputId = ns("Tel1"),
 		                              label = "Total Cost per Interview (in US$) for Telephone",
 		                              20, min = 5, max = 100) ),
 
 		        tags$div(title="Call Center enumerators",
-		                 numericInput(inputId = ns("callcenter"),
+		                 sliderInput(inputId = ns("callcenter"),
 		                              label = "Max Capacity of monthly working day for Call Center enumerators",
-		                              20, min = 1, max = 100) ),
-		        br()  )
+		                              20, min = 1, max = 100) ) 
+		           )
+		        )
+		    )
 		  )
+		  ),
+		 fluidRow(
+		    column(
+		      12,
+		      box(title = " Data Collection Plan Review",
+		          width = NULL,
+		          collapsible = FALSE,
+		          status = "success",
+		          actionButton(inputId = ns("ApplyCollection"),
+		                       label="Optimise Collection",
+		                       icon("calculator")),
+		          hr(),
+		          "See below some feedback on your data collection plan based on
+                  estimated interview duration, budget and enumeration capacity.
+               Indication of the suggested length of the interview given the mode:
+               can help informing and spliting the content of questionnaires in multiple wave.",
+		          
+		          verbatimTextOutput( outputId = ns("collectionsummary"))
+		          )
+		      )
 		) ,
 		fluidRow(
 		  # Valid statuses are: primary, success, info, warning, danger.
 		  column(
 		    12,
-		    box(title = " Data Collection Plan -- Analysis",
+		    box(title = " Set up number of Waves",
 		        width = NULL,
-		        collapsible = FALSE,
-		        status = "success",
-		        "Feedback on your data collection analysis plan based on
-                  estimated interview duration, budget and enumeration capacity
-                  will be automatically generated below.
-                   indication of the suggested length of the interview given the mode:
-                   CAPI, 60-90 min; CATI; 30-45 min…and that dictates the number
-                   of questions that are able to be included.
-                  function for that  https://edouard-legoupil.github.io/XlsFormPrettyPrint/reference/interview_duration.html",
-		        hr(),
-		        actionButton(inputId = ns("start"),
-		                     label="Now Publish Survey",
-		                     icon("share-from-square")
-		        )
-		    ))
+		        status = "warning",
+		        " Based on simulation above, decide on how many data collection waves you can manage within the year.",
+		        br(),
+		        sliderInput( inputId =   ns("wave"),
+		                     label = "Set final # data collection waves for this annual cycle",
+		                     value = 1,  min = 1 , max = 4, step = 1 ,
+		                     width = '400px'),
+		        
+		        # selectInput(inputId = ns("wave"),
+		        #             label = "How many data collection waves for this annual cycle?",
+		        #             choices = list("One Wave" = "One-wave",
+		        #                            "Two Waves" = "Two-waves",
+		        #                            "Three Waves" = "Three-waves",
+		        #                            "Four Waves" = "Four-waves" ),
+		        #             selected = "One-waves"),
+		        "As a result of this stage, the app will generate one or more than one xlsform files!",
+		        br()  )
+		  )
 		)# End fluid row
 	)
 }
