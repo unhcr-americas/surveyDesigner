@@ -5,19 +5,22 @@ Authors@R: c(
     person("Edouard", "Legoupil", , "legoupil@unhcr.org", role = c("aut", "cre")),
     person("Cervan", "Girard", , "cervan@thinkr.fr", role = "aut")
   )
-Description: The package offers a series of utilities to help field practionners
-            designing their annual survey cycle.
+Description: The package offers a series of utilities to help field
+    practionners designing their annual survey cycle.
 License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
-    dplyr, 
-    shinydashboard,
+    countrycode,
+    dplyr,
+    glue,
     golem (>= 0.4.0),
-    magrittr,
     purrr,
     R6,
     readxl,
+    refugees,
     shiny (>= 1.7.3),
+    shinydashboard,
+    tidyverse,
     unhcrshiny
 Suggests: 
     knitr,
@@ -25,10 +28,10 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 3.0.0)
-Remotes: 
-    edouard-legoupil/unhcrshiny
 VignetteBuilder: 
     knitr
+Remotes: 
+    edouard-legoupil/unhcrshiny
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US

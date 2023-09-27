@@ -41,7 +41,7 @@ mod_content_ui <- function(id) {
 		        fluidRow(
 		          # Valid statuses are: primary, success, info, warning, danger.
 		          column(
-		            6,
+		            12,
 		            box(title = " Filters on Topics",
 		                width = NULL,
 		                collapsible = FALSE,
@@ -111,27 +111,27 @@ mod_content_ui <- function(id) {
 		                                                        "Information"  ))
 		            )
 		          ),
-		          column(
-		            6,
-		            box(title = " Filters on Framework",
-		                width = NULL,
-		                status = "warning",
-		                tags$div(title="Standard Indicators",
-		                         checkboxGroupInput(inputId = ns("Disaggregation"),
-		                                            label = " Tick to filter ",
-		                                            choices = list("UNHCR Compass / RBM"="RBM",
-		                                                           "UN Stat Commission / EGRISS"="EGRISS",
-		                                                           "Sustainable Development Goal / SDG"="SDG",
-		                                                           "Global Compact on Refugee / GCR"="GCR",
-		                                                           "Humanitarian Sphere Standards"="Sphere",
-		                                                           "Post Distribution & Assistance Monitoring"="PDM",
-		                                                           "Assistance Targeting / Excellence Hub"="targeting",
-		                                                           "Framework on Durable Solutions /IASC "="Durable",
-		                                                           "Protection Mainstreaming / ECHO "="Durable",
-		                                                           "Composite Indicator / Index"="Index"
-		                                            )    ) )
-		            )
-		          )
+		          # column(
+		          #   6,
+		          #   box(title = " Filters on Framework",
+		          #       width = NULL,
+		          #       status = "warning",
+		          #       tags$div(title="Standard Indicators",
+		          #                checkboxGroupInput(inputId = ns("Disaggregation"),
+		          #                                   label = " Tick to filter ",
+		          #                                   choices = list("UNHCR Compass / RBM"="RBM",
+		          #                                                  "UN Stat Commission / EGRISS"="EGRISS",
+		          #                                                  "Sustainable Development Goal / SDG"="SDG",
+		          #                                                  "Global Compact on Refugee / GCR"="GCR",
+		          #                                                  "Humanitarian Sphere Standards"="Sphere",
+		          #                                                  "Post Distribution & Assistance Monitoring"="PDM",
+		          #                                                  "Assistance Targeting / Excellence Hub"="targeting",
+		          #                                                  "Framework on Durable Solutions /IASC "="Durable",
+		          #                                                  "Protection Mainstreaming / ECHO "="Durable",
+		          #                                                  "Composite Indicator / Index"="Index"
+		          #                                   )    ) )
+		          #   )
+		          # )
 		        )
 
 
