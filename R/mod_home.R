@@ -27,7 +27,7 @@ mod_home_ui <- function(id) {
 		  resources for smarter data collect over multiple waves and modes are not straightforward processes... ",
 		     style = "font-size: 20px"),
 		  br(),
-		  p( "This app aims at addressing the complex challenges associated with the design of integrated surveys. It is expected to help:" ,
+		  p( "This ",tags$span("companion app", style = "color:#00B398"), " aims at addressing the complex challenges associated with the design of integrated surveys. It is expected to help:" ,
 		  tags$ol(
 		    tags$li(" Standardizing a questionnaire design process that starts with a",tags$b(" selection of indicators ") ,"that needs
                             to be measured and thenpre-select automatically all the required standardized survey modules and
@@ -47,7 +47,15 @@ mod_home_ui <- function(id) {
 		            style = "font-size: 16px; text-align: left;" )
 		  ) ,
 		  style = "font-size: 16px; text-align: left;"),
-
+		  br(),
+		  p("This app is part of a ",tags$span("comprehensive app toolkit", style = "color:#00B398"),
+		    " to mainstream knowledge & enhance the process of survey implementation through Kobotoolbox. It includes: ",
+		    tags$a(href="https://rstudio.unhcr.org/rmsSampling/", "rmsSampling"), " to help designing sampling strategies, ",
+		    tags$a(href="https://rstudio.unhcr.org/Survey_Designer", "SurveyDesigner"), " to help integrating annual survey needs, ",
+		    tags$a(href="https://rstudio.unhcr.org/XlsFormUtil/", "XlsFormUtil"), " to help reviewing form contextualisation, ",
+		    tags$a(href="https://rstudio.unhcr.org/HighFrequencyChecks/", "HighFrequencyChecks"), " to monitor data collection quality, ",
+		    tags$a(href="https://rstudio.unhcr.org/kobocruncher/", "KoboCruncher"), " to perform rapid data exploration and compile indicators.",
+		    style = "font-size: 12px"),
 		  p(tags$i( class = "fa fa-github"),
 		    "App built with ",
 		    tags$a(href="https://edouard-legoupil.github.io/graveler/",

@@ -63,7 +63,7 @@ mod_collection_ui <- function(id) {
 		  ),
 		  column(
 		    4,
-		    box(title = " 2. Survey Respondant Attrition",
+		    box(title = " 2. Survey Respondent Attrition",
 		        # https://academic.oup.com/jssam/advance-article-abstract/doi/10.1093/jssam/smad028/7255957?redirectedFrom=fulltext
 		        # https://academic.oup.com/jssam/advance-article-abstract/doi/10.1093/jssam/smad007/7111262?redirectedFrom=fulltext&login=false
 		        width = NULL,
@@ -106,7 +106,7 @@ mod_collection_ui <- function(id) {
 		  
 		  column(
 		    4,
-		    box(title = " 2. Enumeration Capacity",
+		    box(title = " 3. Enumeration Capacity",
 		        width = NULL,
 		        collapsible = FALSE,
 		        status = "warning",
